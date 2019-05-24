@@ -1,10 +1,11 @@
 package com.macoredroid.onlinebookstore.entity;
 import com.fasterxml.jackson.annotation.*;
-import jdk.jfr.Unsigned;
+
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
 @Entity
@@ -20,7 +21,7 @@ public class Booklist {
     private Double price;
     private String isbn;
     private int stock;
-    
+
     @Id
     @Column(name = "booklistID")
     @GeneratedValue(strategy = IDENTITY)
@@ -77,6 +78,34 @@ public class Booklist {
     public void setStock(int stock) {
         this.stock =stock;
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Booklist that = (Booklist) o;
+
+        if (booklistID != that.booklistID) return false;
+        if (!Objects.equals(name, that.name)) return false;
+        if (!Objects.equals(price, that.price)) return false;
+        if (!Objects.equals(isbn, that.isbn)) return false;
+        if (!Objects.equals(stock, that.stock)) return false;
+
+
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = booklistID;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
+        result = 31 * result + stock;
+        return result;
+    }
+
 
 }
 
