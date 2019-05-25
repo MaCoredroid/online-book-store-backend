@@ -16,6 +16,12 @@ public class BooklistServiceimpl implements BooklistService {
     public Booklist findBookByID(Integer id) {
         return BooklistDao.findOne(id);
     }
+
+    @Override
+    public Booklist findByIsbn(String isbn) {
+        return BooklistDao.findByIsbn(isbn);
+    }
+
     @Override
     public List<Booklist> findAll()
     {

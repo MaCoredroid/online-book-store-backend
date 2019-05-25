@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface BooklistService {
     Booklist findBookByID(Integer id);
+    Booklist findByIsbn(String isbn);
     List<Booklist> findAll();
 }

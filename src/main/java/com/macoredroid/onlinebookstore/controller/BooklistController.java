@@ -19,6 +19,14 @@ public class BooklistController {
         System.out.println("Searching Book: " + id);
         return BooklistService.findBookByID(id);
     }
+    @GetMapping(value="/Booklist/{isbn}")
+    public Booklist findbyIsbn(@PathVariable("isbn") String isbn)
+    {
+        isbn=isbn.replaceAll("[^\\x00-\\x7F]", "");
+        System.out.println("Print book by isbn:");
+        return BooklistService.findByIsbn(isbn);
+
+    }
     @GetMapping(value="/booklist")
     public List<Booklist> findAll()
     {

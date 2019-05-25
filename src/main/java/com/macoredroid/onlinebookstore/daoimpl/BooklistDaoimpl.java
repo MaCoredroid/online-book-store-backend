@@ -18,6 +18,11 @@ public class BooklistDaoimpl implements BooklistDao {
     }
 
     @Override
+    public Booklist findByIsbn(String isbn) {
+        return BooklistRepository.findByIsbn(isbn);
+    }
+
+    @Override
     public List<Booklist> findAll() {
         return BooklistRepository.findAll();
     }
