@@ -3,8 +3,6 @@ import com.fasterxml.jackson.annotation.*;
 
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.List;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
