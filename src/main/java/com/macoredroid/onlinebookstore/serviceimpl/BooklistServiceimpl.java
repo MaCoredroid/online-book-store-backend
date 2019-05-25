@@ -6,6 +6,8 @@ import com.macoredroid.onlinebookstore.service.BooklistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BooklistServiceimpl implements BooklistService {
     @Autowired
@@ -13,5 +15,10 @@ public class BooklistServiceimpl implements BooklistService {
     @Override
     public Booklist findBookByID(Integer id) {
         return BooklistDao.findOne(id);
+    }
+    @Override
+    public List<Booklist> findAll()
+    {
+        return BooklistDao.findAll();
     }
 }
