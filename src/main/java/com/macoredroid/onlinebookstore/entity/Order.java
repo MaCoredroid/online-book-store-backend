@@ -47,7 +47,7 @@ public class Order {
         this.time = time;
     }
 
- 
+
 
     @Basic
     @Column(name = "isbn")
