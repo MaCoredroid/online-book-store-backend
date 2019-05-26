@@ -13,6 +13,7 @@ public class OrderDaoimpl implements OrderDao {
 
     @Override
     public List<Order> findAllByUsername(String username) {
+        username =username.replaceAll("[^\\x00-\\x7F]", "");
         return OrderRepository.findAIIByUsername(username);
     }
 
