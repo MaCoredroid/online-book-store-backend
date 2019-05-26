@@ -1,8 +1,11 @@
 package com.macoredroid.onlinebookstore.entity;
-import com.fasterxml.jackson.annotation.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -19,6 +22,7 @@ public class Booklist {
     private Double price;
     private String isbn;
     private int stock;
+    private List<Cart> orders;
 
     @Id
     @Column(name = "booklistID")
@@ -71,6 +75,13 @@ public class Booklist {
     @Column(name = "stock")
     public int getStock() {
         return stock;
+    }
+
+
+    @OneToMany(targetEntity =Cart.class, mappedBy = "book")
+    public List<Cart> getOrders()
+    {
+        return orders;
     }
 
     public void setStock(int stock) {

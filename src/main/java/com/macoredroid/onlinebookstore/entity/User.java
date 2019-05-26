@@ -1,9 +1,11 @@
 package com.macoredroid.onlinebookstore.entity;
 
-import com.fasterxml.jackson.annotation.*;
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -19,6 +21,8 @@ public class User {
     private String password;
     private String email;
     private int star;
+    private List<Cart> carts;
+    private List<Order> orders;
 
     @Id
     @Column(name = "userID")
@@ -65,6 +69,17 @@ public class User {
 
     public void setStar(int star) {
         this.star =star;
+    }
+
+    @OneToMany(targetEntity=Cart.class, mappedBy = "user")
+    public List<Cart> getCarts()
+    {
+        return carts;
+    }
+    @OneToMany(targetEntity = Order.class, mappedBy = "users")
+    public List<Order> getOrders()
+    {
+        return orders;
     }
 
     @Override

@@ -19,7 +19,6 @@ public class Order {
     private String username;
     private String time;
     private int number;
-
     @Id
     @Column(name = "orderid")
     @GeneratedValue(strategy = IDENTITY)
@@ -28,14 +27,19 @@ public class Order {
     public void setOrderid(int orderid) { this.orderid=orderid; }
 
     @Basic
-    @Column(name = "username")
-    public String getUsername() {
-        return username;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "username",referencedColumnName="username")
+    private User users;
+
+    @Basic
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "username",referencedColumnName="username")
+    public User getUser() {
+
+        return users;
     }
 
-    public void setUsername(String username) {
-        this.username= username;
-    }
+
 
     @Basic
     @Column(name = "time")

@@ -1,7 +1,8 @@
 package com.macoredroid.onlinebookstore.entity;
 
-import com.fasterxml.jackson.annotation.*;
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -15,10 +16,10 @@ import static javax.persistence.GenerationType.IDENTITY;
         property = "cartid")
 public class Cart {
     private int cartid;
-    private String isbn;
-    private String username;
     private String time;
     private int number;
+    private Booklist book;
+    private User user;
 
     @Id
     @Column(name = "cartid")
@@ -28,13 +29,11 @@ public class Cart {
     public void setCartid(int cartid) { this.cartid=cartid; }
 
     @Basic
-    @Column(name = "username")
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username= username;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "username",referencedColumnName = "username")
+    public User getUser()
+    {
+        return user;
     }
 
     @Basic
@@ -50,13 +49,16 @@ public class Cart {
 
 
     @Basic
-    @Column(name = "isbn")
-    public String getIsbn() {
-        return isbn;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "isbn",referencedColumnName = "isbn")
+    public Booklist getBook()
+    {
+        return book;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setBook(Booklist book)
+    {
+        this.book=book;
     }
 
     @Basic
@@ -76,9 +78,9 @@ public class Cart {
         Cart that = (Cart) o;
 
         if (cartid != that.cartid) return false;
-        if (!Objects.equals(username, that.username)) return false;
+        if (!Objects.equals(user, that.user)) return false;
         if (!Objects.equals(number, that.number)) return false;
-        if (!Objects.equals(isbn, that.isbn)) return false;
+        if (!Objects.equals(book, that.book)) return false;
         if (!Objects.equals(time, that.time)) return false;
 
 
@@ -89,9 +91,9 @@ public class Cart {
     @Override
     public int hashCode() {
         int result = cartid;
-        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (user != null ? user.hashCode() : 0);
         result = 31 * result + (time != null ? time.hashCode() : 0);
-        result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
+        result = 31 * result + (book != null ? book.hashCode() : 0);
         result = 31 * result + number;
         return result;
     }

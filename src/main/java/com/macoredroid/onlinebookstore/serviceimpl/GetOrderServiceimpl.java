@@ -25,6 +25,10 @@ public class GetOrderServiceimpl implements GetOrderService {
         List<Order> templist=OrderDao.findAllByUsername(username);
         for(Order temporder:templist) {
             temporder.setIsbn(temporder.getIsbn().replaceAll("[^\\x00-\\x7F]", ""));
+            if(BooklistDao.findByIsbn(temporder.getIsbn())==null)
+            {
+                return null;
+            }
             Booklist temp= BooklistDao.findByIsbn(temporder.getIsbn());
             resultlist.add(new Orderinfo(temp.getIsbn(), temporder.getNumber(),temp.getAuthor(),temp.getPrice(), temp.getName()));
         }
