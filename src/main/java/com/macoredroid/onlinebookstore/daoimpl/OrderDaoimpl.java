@@ -13,7 +13,7 @@ public class OrderDaoimpl implements OrderDao {
 
     @Override
     public List<Order> findAllByUsername(String username) {
-        return OrderRepository.findAllByUsername(username);
+        return OrderRepository.findAIIByUsername(username);
     }
 
     @Override

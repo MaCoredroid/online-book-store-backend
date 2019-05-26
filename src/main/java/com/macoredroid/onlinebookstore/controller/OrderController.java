@@ -1,6 +1,6 @@
 package com.macoredroid.onlinebookstore.controller;
 
-import com.macoredroid.onlinebookstore.entity.Order;
+import com.macoredroid.onlinebookstore.info.Orderinfo;
 import com.macoredroid.onlinebookstore.service.GetOrderService;
 import com.macoredroid.onlinebookstore.service.GetSalesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class OrderController {
     private GetOrderService GetOrderService;
     private GetSalesService GetSalesService;
     @GetMapping(value ="/order/{username}")
-    public List<Order> findUser(@PathVariable("username") String username)
+    public List<Orderinfo> findUser(@PathVariable("username") String username)
     {
         System.out.println("User Tried to get orders: "+username);
         return  GetOrderService.findAllByUsername(username);

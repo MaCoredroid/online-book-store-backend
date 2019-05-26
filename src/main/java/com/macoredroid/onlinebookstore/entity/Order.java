@@ -8,7 +8,7 @@ import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
 @Entity
-@Table(name = "order", schema = "test", catalog = "")
+@Table(name = "orders", schema = "test", catalog = "")
 @JsonIgnoreProperties(value = {"handler","hibernateLazyInitializer","fieldHandler"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
