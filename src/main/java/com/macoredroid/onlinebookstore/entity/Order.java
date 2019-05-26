@@ -1,42 +1,46 @@
 package com.macoredroid.onlinebookstore.entity;
 
-import com.fasterxml.jackson.annotation.*;
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
-
-import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "orders", schema = "test", catalog = "")
 @JsonIgnoreProperties(value = {"handler","hibernateLazyInitializer","fieldHandler"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "orderid")
-public class Order {
+public class Order implements Serializable {
     private int orderid;
     private String isbn;
-    private String username;
     private String time;
     private int number;
+    private User owner;
+
+
     @Id
     @Column(name = "orderid")
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getOrderid() { return orderid; }
 
     public void setOrderid(int orderid) { this.orderid=orderid; }
 
-    @Basic
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "username",referencedColumnName="username")
-    private User users;
+
 
     @Basic
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "username",referencedColumnName="username")
-    public User getUser() {
+    public User getOwner() {
 
-        return users;
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+
+        this.owner = owner;
     }
 
 
@@ -80,7 +84,7 @@ public class Order {
         Order that = (Order) o;
 
         if (orderid != that.orderid) return false;
-        if (!Objects.equals(username, that.username)) return false;
+        if (!Objects.equals(owner, that.owner)) return false;
         if (!Objects.equals(number, that.number)) return false;
         if (!Objects.equals(isbn, that.isbn)) return false;
         if (!Objects.equals(time, that.time)) return false;
@@ -93,7 +97,7 @@ public class Order {
     @Override
     public int hashCode() {
         int result = orderid;
-        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (owner != null ? owner.hashCode() : 0);
         result = 31 * result + (time != null ? time.hashCode() : 0);
         result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
         result = 31 * result + number;

@@ -2,6 +2,7 @@ package com.macoredroid.onlinebookstore.serviceimpl;
 
 import com.macoredroid.onlinebookstore.dao.BooklistDao;
 import com.macoredroid.onlinebookstore.dao.OrderDao;
+import com.macoredroid.onlinebookstore.dao.UserDao;
 import com.macoredroid.onlinebookstore.entity.Booklist;
 import com.macoredroid.onlinebookstore.entity.Order;
 import com.macoredroid.onlinebookstore.info.Orderinfo;
@@ -19,10 +20,13 @@ public class GetOrderServiceimpl implements GetOrderService {
     private OrderDao OrderDao;
     @Autowired
     private BooklistDao BooklistDao;
+    @Autowired
+    private UserDao UserDao;
     @Override
     public List<Orderinfo> findAllByUsername(String username) {
         List<Orderinfo> resultlist= new ArrayList();
-        List<Order> templist=OrderDao.findAllByUsername(username);
+        List<Order> templist= new ArrayList();
+        templist= UserDao.findOne(username).getOrders();
         for(Order temporder:templist) {
             temporder.setIsbn(temporder.getIsbn().replaceAll("[^\\x00-\\x7F]", ""));
             if(BooklistDao.findByIsbn(temporder.getIsbn())==null)

@@ -5,16 +5,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
-
-import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "carts", schema = "test", catalog = "")
 @JsonIgnoreProperties(value = {"handler","hibernateLazyInitializer","fieldHandler"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "cartid")
-public class Cart {
+public class Cart implements Serializable {
     private int cartid;
     private String time;
     private int number;
@@ -23,7 +22,7 @@ public class Cart {
 
     @Id
     @Column(name = "cartid")
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getCartid() { return cartid; }
 
     public void setCartid(int cartid) { this.cartid=cartid; }
@@ -34,6 +33,11 @@ public class Cart {
     public User getUser()
     {
         return user;
+    }
+
+    public void setUser(User user)
+    {
+        this.user=user;
     }
 
     @Basic

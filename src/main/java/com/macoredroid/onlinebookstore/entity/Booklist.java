@@ -5,28 +5,28 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "booklist", schema = "test", catalog = "")
 @JsonIgnoreProperties(value = {"handler","hibernateLazyInitializer","fieldHandler"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "booklistID")
-public class Booklist {
+public class Booklist implements Serializable {
     private int booklistID;
     private String name;
     private String author;
     private Double price;
     private String isbn;
     private int stock;
-    private List<Cart> orders;
+    private List<Cart> orders=new ArrayList();
 
     @Id
     @Column(name = "booklistID")
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getBooklistID() { return booklistID; }
 
     public void setBooklistID(int booklistID) { this.booklistID=booklistID; }
@@ -84,6 +84,11 @@ public class Booklist {
         return orders;
     }
 
+    public void setOrders(List<Cart> orders)
+    {
+       this.orders=orders;
+    }
+
     public void setStock(int stock) {
         this.stock =stock;
     }
@@ -99,6 +104,8 @@ public class Booklist {
         if (!Objects.equals(price, that.price)) return false;
         if (!Objects.equals(isbn, that.isbn)) return false;
         if (!Objects.equals(stock, that.stock)) return false;
+        if (!Objects.equals(orders, that.orders)) return false;
+
 
 
 
@@ -111,6 +118,7 @@ public class Booklist {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
+        result = 31 * result + (orders != null ? orders.hashCode() : 0);
         result = 31 * result + stock;
         return result;
     }
