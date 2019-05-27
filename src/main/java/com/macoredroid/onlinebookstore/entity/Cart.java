@@ -3,6 +3,8 @@ package com.macoredroid.onlinebookstore.entity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,13 +24,14 @@ public class Cart implements Serializable {
 
     @Id
     @Column(name = "cartid")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getCartid() { return cartid; }
 
     public void setCartid(int cartid) { this.cartid=cartid; }
 
     @Basic
     @ManyToOne(fetch=FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "username",referencedColumnName = "username")
     public User getUser()
     {
@@ -54,6 +57,7 @@ public class Cart implements Serializable {
 
     @Basic
     @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "isbn",referencedColumnName = "isbn")
     public Booklist getBook()
     {
@@ -101,6 +105,8 @@ public class Cart implements Serializable {
         result = 31 * result + number;
         return result;
     }
+
+
 
 
 }

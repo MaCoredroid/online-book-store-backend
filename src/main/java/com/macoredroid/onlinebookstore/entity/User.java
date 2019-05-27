@@ -26,7 +26,7 @@ public class User implements Serializable {
 
     @Id
     @Column(name = "userID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getUserID() { return userID; }
 
     public void setUserID(int userID) { this.userID=userID; }
@@ -124,5 +124,19 @@ public class User implements Serializable {
         return result;
     }
 
+    private User()
+    {
 
+    }
+
+    public User(String username,String password,String email,int star)
+    {
+        this.username=username;
+        this.password=password;
+        this.email=email;
+        this.star=star;
+        this.carts=new ArrayList<>();
+        this.orders=new ArrayList<>();
+
+    }
 }

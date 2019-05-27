@@ -26,7 +26,7 @@ public class Booklist implements Serializable {
 
     @Id
     @Column(name = "booklistID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getBooklistID() { return booklistID; }
 
     public void setBooklistID(int booklistID) { this.booklistID=booklistID; }

@@ -3,6 +3,8 @@ package com.macoredroid.onlinebookstore.entity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,7 +25,7 @@ public class Order implements Serializable {
 
     @Id
     @Column(name = "orderid")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
     public int getOrderid() { return orderid; }
 
     public void setOrderid(int orderid) { this.orderid=orderid; }
@@ -32,6 +34,7 @@ public class Order implements Serializable {
 
     @Basic
     @ManyToOne(fetch=FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "username",referencedColumnName="username")
     public User getOwner() {
 
