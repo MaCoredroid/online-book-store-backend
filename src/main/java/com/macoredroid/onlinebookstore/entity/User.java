@@ -41,7 +41,7 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    @OneToMany(targetEntity = Order.class, mappedBy = "owner")
+    @OneToMany(targetEntity = Order.class, mappedBy = "owner",cascade = CascadeType.ALL)
     public List<Order> getOrders()
     {
         return orders;
@@ -52,7 +52,7 @@ public class User implements Serializable {
         this.orders=orders;
     }
 
-    @OneToMany(targetEntity=Cart.class, mappedBy = "user")
+    @OneToMany(targetEntity=Cart.class, mappedBy = "user",cascade = CascadeType.ALL)
     public List<Cart> getCarts()
     {
         return carts;

@@ -28,4 +28,9 @@ public class BooklistDaoimpl implements BooklistDao {
     public List<Booklist> findAll() {
         return BooklistRepository.findAll();
     }
+
+    @Override
+    public void save(Booklist booklist) {
+        BooklistRepository.save(booklist);
+    }
 }

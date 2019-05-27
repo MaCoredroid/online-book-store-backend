@@ -106,6 +106,20 @@ public class Cart implements Serializable {
         return result;
     }
 
+    private Cart()
+    {
+
+    }
+
+    public Cart(String time,int number,Booklist book,User user)
+    {
+        this.time=time;
+        this.number=number;
+        this.book=book;
+        this.user=user;
+    }
+
+
 
 
 

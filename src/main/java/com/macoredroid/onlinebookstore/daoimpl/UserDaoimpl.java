@@ -22,4 +22,9 @@ public class UserDaoimpl implements UserDao {
         User temp= new User(username,password,email,star);
         userRepository.save(temp);
     }
+
+    @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
 }
