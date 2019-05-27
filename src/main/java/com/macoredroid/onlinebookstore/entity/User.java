@@ -1,28 +1,32 @@
 package com.macoredroid.onlinebookstore.entity;
 
-import com.fasterxml.jackson.annotation.*;
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-
-import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "users", schema = "test", catalog = "")
 @JsonIgnoreProperties(value = {"handler","hibernateLazyInitializer","fieldHandler"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "userID")
-public class User {
+public class User implements Serializable {
     private int userID;
     private String username;
     private String password;
     private String email;
     private int star;
+    private List<Cart> carts =new ArrayList();
+    private List<Order> orders=new ArrayList();
 
     @Id
     @Column(name = "userID")
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getUserID() { return userID; }
 
     public void setUserID(int userID) { this.userID=userID; }
@@ -36,6 +40,30 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    @OneToMany(targetEntity = Order.class, mappedBy = "owner")
+    public List<Order> getOrders()
+    {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders)
+    {
+        this.orders=orders;
+    }
+
+    @OneToMany(targetEntity=Cart.class, mappedBy = "user")
+    public List<Cart> getCarts()
+    {
+        return carts;
+    }
+
+    public void setCarts(List<Cart> carts)
+    {
+        this.carts=carts;
+    }
+
+
 
     @Basic
     @Column(name = "password")
@@ -66,6 +94,7 @@ public class User {
     public void setStar(int star) {
         this.star =star;
     }
+
 
     @Override
     public boolean equals(Object o) {

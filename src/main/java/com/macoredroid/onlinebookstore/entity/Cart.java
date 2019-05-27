@@ -8,42 +8,37 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 @Entity
-@Table(name = "orders", schema = "test", catalog = "")
+@Table(name = "carts", schema = "test", catalog = "")
 @JsonIgnoreProperties(value = {"handler","hibernateLazyInitializer","fieldHandler"})
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "orderid")
-public class Order implements Serializable {
-    private int orderid;
-    private String isbn;
+        property = "cartid")
+public class Cart implements Serializable {
+    private int cartid;
     private String time;
     private int number;
-    private User owner;
-
+    private Booklist book;
+    private User user;
 
     @Id
-    @Column(name = "orderid")
+    @Column(name = "cartid")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int getOrderid() { return orderid; }
+    public int getCartid() { return cartid; }
 
-    public void setOrderid(int orderid) { this.orderid=orderid; }
-
-
+    public void setCartid(int cartid) { this.cartid=cartid; }
 
     @Basic
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "username",referencedColumnName="username")
-    public User getOwner() {
-
-        return owner;
+    @JoinColumn(name = "username",referencedColumnName = "username")
+    public User getUser()
+    {
+        return user;
     }
 
-    public void setOwner(User owner) {
-
-        this.owner = owner;
+    public void setUser(User user)
+    {
+        this.user=user;
     }
-
-
 
     @Basic
     @Column(name = "time")
@@ -58,13 +53,16 @@ public class Order implements Serializable {
 
 
     @Basic
-    @Column(name = "isbn")
-    public String getIsbn() {
-        return isbn;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "isbn",referencedColumnName = "isbn")
+    public Booklist getBook()
+    {
+        return book;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setBook(Booklist book)
+    {
+        this.book=book;
     }
 
     @Basic
@@ -81,12 +79,12 @@ public class Order implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Order that = (Order) o;
+        Cart that = (Cart) o;
 
-        if (orderid != that.orderid) return false;
-        if (!Objects.equals(owner, that.owner)) return false;
+        if (cartid != that.cartid) return false;
+        if (!Objects.equals(user, that.user)) return false;
         if (!Objects.equals(number, that.number)) return false;
-        if (!Objects.equals(isbn, that.isbn)) return false;
+        if (!Objects.equals(book, that.book)) return false;
         if (!Objects.equals(time, that.time)) return false;
 
 
@@ -96,10 +94,10 @@ public class Order implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = orderid;
-        result = 31 * result + (owner != null ? owner.hashCode() : 0);
+        int result = cartid;
+        result = 31 * result + (user != null ? user.hashCode() : 0);
         result = 31 * result + (time != null ? time.hashCode() : 0);
-        result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
+        result = 31 * result + (book != null ? book.hashCode() : 0);
         result = 31 * result + number;
         return result;
     }
