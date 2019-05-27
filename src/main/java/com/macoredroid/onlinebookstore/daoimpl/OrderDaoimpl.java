@@ -16,4 +16,9 @@ public class OrderDaoimpl implements OrderDao {
     public List<Order> findAllByIsbn(String isbn) {
         return OrderRepository.findAllByIsbn(isbn);
     }
+
+    @Override
+    public void save(Order order) {
+        OrderRepository.save(order);
+    }
 }

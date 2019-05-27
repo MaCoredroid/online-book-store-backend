@@ -1,6 +1,7 @@
 package com.macoredroid.onlinebookstore.controller;
 
 import com.macoredroid.onlinebookstore.entity.Booklist;
+import com.macoredroid.onlinebookstore.info.bookinfo;
 import com.macoredroid.onlinebookstore.service.BooklistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class BooklistController {
         return BooklistService.findBookByID(id);
     }
     @GetMapping(value="/Booklist/{isbn}")
-    public Booklist findbyIsbn(@PathVariable("isbn") String isbn)
+    public bookinfo findbyIsbn(@PathVariable("isbn") String isbn)
     {
         isbn=isbn.replaceAll("[^\\x00-\\x7F]", "");
         System.out.println("Print book by isbn:");
@@ -28,9 +29,8 @@ public class BooklistController {
 
     }
     @GetMapping(value="/booklist")
-    public List<Booklist> findAll()
+    public List<bookinfo> findAll()
     {
-        System.out.println("Print all books:");
         return BooklistService.findAll();
 
     }
@@ -38,10 +38,10 @@ public class BooklistController {
     public List<String> findAllisbn()
     {
         System.out.println("Print all books:");
-        List<Booklist> temp=BooklistService.findAll();
+        List<bookinfo> temp=BooklistService.findAll();
         List<String> isbnlist=new ArrayList<>();
         for (int i = 0; i < temp.size(); i++) {
-           isbnlist.add(temp.get(i).getIsbn());
+           isbnlist.add(temp.get(i).isbn);
         }
         return isbnlist;
 

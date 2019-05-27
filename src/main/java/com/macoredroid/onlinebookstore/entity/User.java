@@ -23,10 +23,11 @@ public class User implements Serializable {
     private int star;
     private List<Cart> carts =new ArrayList();
     private List<Order> orders=new ArrayList();
+    private static final long serialVersionUID = 4L;
 
     @Id
     @Column(name = "userID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getUserID() { return userID; }
 
     public void setUserID(int userID) { this.userID=userID; }
@@ -41,7 +42,7 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    @OneToMany(targetEntity = Order.class, mappedBy = "owner")
+    @OneToMany(targetEntity = Order.class, mappedBy = "owner",cascade = CascadeType.ALL)
     public List<Order> getOrders()
     {
         return orders;
@@ -52,7 +53,7 @@ public class User implements Serializable {
         this.orders=orders;
     }
 
-    @OneToMany(targetEntity=Cart.class, mappedBy = "user")
+    @OneToMany(targetEntity=Cart.class, mappedBy = "user",cascade = CascadeType.ALL)
     public List<Cart> getCarts()
     {
         return carts;
@@ -124,5 +125,19 @@ public class User implements Serializable {
         return result;
     }
 
+    private User()
+    {
 
+    }
+
+    public User(String username,String password,String email,int star)
+    {
+        this.username=username;
+        this.password=password;
+        this.email=email;
+        this.star=star;
+        this.carts=new ArrayList<>();
+        this.orders=new ArrayList<>();
+
+    }
 }

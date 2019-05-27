@@ -1,7 +1,6 @@
 package com.macoredroid.onlinebookstore.serviceimpl;
 
 import com.macoredroid.onlinebookstore.dao.BooklistDao;
-import com.macoredroid.onlinebookstore.dao.OrderDao;
 import com.macoredroid.onlinebookstore.dao.UserDao;
 import com.macoredroid.onlinebookstore.entity.Booklist;
 import com.macoredroid.onlinebookstore.entity.Order;
@@ -17,16 +16,13 @@ import java.util.List;
 @Service
 public class GetOrderServiceimpl implements GetOrderService {
     @Autowired
-    private OrderDao OrderDao;
-    @Autowired
     private BooklistDao BooklistDao;
     @Autowired
     private UserDao UserDao;
     @Override
     public List<Orderinfo> findAllByUsername(String username) {
         List<Orderinfo> resultlist= new ArrayList();
-        List<Order> templist= new ArrayList();
-        templist= UserDao.findOne(username).getOrders();
+        List<Order> templist= UserDao.findOne(username).getOrders();
         for(Order temporder:templist) {
             temporder.setIsbn(temporder.getIsbn().replaceAll("[^\\x00-\\x7F]", ""));
             if(BooklistDao.findByIsbn(temporder.getIsbn())==null)
@@ -34,7 +30,7 @@ public class GetOrderServiceimpl implements GetOrderService {
                 return null;
             }
             Booklist temp= BooklistDao.findByIsbn(temporder.getIsbn());
-            resultlist.add(new Orderinfo(temp.getIsbn(), temporder.getNumber(),temp.getAuthor(),temp.getPrice(), temp.getName()));
+            resultlist.add(new Orderinfo(temporder.getTime(),Integer.toString(temporder.getOrderid()),temp.getIsbn(), temporder.getNumber(),temp.getAuthor(),temp.getPrice(), temp.getName()));
         }
 
         return resultlist;
