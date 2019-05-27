@@ -1,6 +1,8 @@
 package com.macoredroid.onlinebookstore.info;
 
 public class Cartinfo {
+    public String CartID;
+    public String timestamp;
     public String isbn;
     public int    number;
     public String name;
@@ -9,8 +11,10 @@ public class Cartinfo {
 
 
 
-    public Cartinfo(String isbn,int number,String author,Double price,String name)
+    public Cartinfo(String timestamp,String CartID,String isbn,int number,String author,Double price,String name)
     {
+        this.timestamp=timestamp;
+        this.CartID=CartID;
         this.isbn=isbn;
         this.number=number;
         this.author=author;

@@ -30,7 +30,7 @@ public class GetOrderServiceimpl implements GetOrderService {
                 return null;
             }
             Booklist temp= BooklistDao.findByIsbn(temporder.getIsbn());
-            resultlist.add(new Orderinfo(temp.getIsbn(), temporder.getNumber(),temp.getAuthor(),temp.getPrice(), temp.getName()));
+            resultlist.add(new Orderinfo(temporder.getTime(),Integer.toString(temporder.getOrderid()),temp.getIsbn(), temporder.getNumber(),temp.getAuthor(),temp.getPrice(), temp.getName()));
         }
 
         return resultlist;
