@@ -21,6 +21,7 @@ public class Cart implements Serializable {
     private int number;
     private Booklist book;
     private User user;
+    private static final long serialVersionUID = 4L;
 
     @Id
     @Column(name = "cartid")

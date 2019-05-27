@@ -23,7 +23,7 @@ public class Booklist implements Serializable {
     private String isbn;
     private int stock;
     private List<Cart> carts=new ArrayList();
-
+    private static final long serialVersionUID = 4L;
     @Id
     @Column(name = "booklistID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

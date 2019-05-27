@@ -21,6 +21,7 @@ public class Order implements Serializable {
     private String time;
     private int number;
     private User owner;
+    private static final long serialVersionUID = 4L;
 
 
     @Id

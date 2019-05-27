@@ -23,6 +23,7 @@ public class User implements Serializable {
     private int star;
     private List<Cart> carts =new ArrayList();
     private List<Order> orders=new ArrayList();
+    private static final long serialVersionUID = 4L;
 
     @Id
     @Column(name = "userID")

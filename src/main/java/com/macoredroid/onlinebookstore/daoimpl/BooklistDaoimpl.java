@@ -26,11 +26,17 @@ public class BooklistDaoimpl implements BooklistDao {
 
     @Override
     public List<Booklist> findAll() {
+       /* List<Booklist> templist=BooklistRepository.findAll();
+        for(Booklist tempbook:templist)
+        {
+            System.out.println(tempbook.getName());
+        }
+        System.out.println(BooklistRepository.findAll());*/
         return BooklistRepository.findAll();
     }
 
     @Override
     public void save(Booklist booklist) {
-        BooklistRepository.save(booklist);
+        BooklistRepository.saveAndFlush(booklist);
     }
 }
