@@ -19,6 +19,6 @@ public class OrderDaoimpl implements OrderDao {
 
     @Override
     public void save(Order order) {
-        OrderRepository.saveAndFlush(order);
+        OrderRepository.save(order);
     }
 }

@@ -25,6 +25,6 @@ public class UserDaoimpl implements UserDao {
 
     @Override
     public void save(User user) {
-        userRepository.saveAndFlush(user);
+        userRepository.save(user);
     }
 }

@@ -37,6 +37,6 @@ public class BooklistDaoimpl implements BooklistDao {
 
     @Override
     public void save(Booklist booklist) {
-        BooklistRepository.saveAndFlush(booklist);
+        BooklistRepository.save(booklist);
     }
 }

@@ -17,5 +17,15 @@ public class CartDaoimpl implements CartDao {
         CartRepository.saveAndFlush(cart);
     }
 
+    @Override
+    public Cart findOne(Integer id) {
+        return CartRepository.findById(id).get();
+    }
+
+    @Override
+    public void remove(Integer id) {
+        CartRepository.deleteById(id);
+    }
+
 
 }
