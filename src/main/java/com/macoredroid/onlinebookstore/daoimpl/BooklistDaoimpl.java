@@ -14,7 +14,7 @@ public class BooklistDaoimpl implements BooklistDao {
     private BooklistRepository BooklistRepository;
     @Override
     public Booklist findOne(Integer id) {
-        return BooklistRepository.getOne(id);
+        return BooklistRepository.findById(id).get();
     }
 
     @Override
@@ -26,12 +26,6 @@ public class BooklistDaoimpl implements BooklistDao {
 
     @Override
     public List<Booklist> findAll() {
-       /* List<Booklist> templist=BooklistRepository.findAll();
-        for(Booklist tempbook:templist)
-        {
-            System.out.println(tempbook.getName());
-        }
-        System.out.println(BooklistRepository.findAll());*/
         return BooklistRepository.findAll();
     }
 

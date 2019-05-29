@@ -1,5 +1,6 @@
 package com.macoredroid.onlinebookstore.serviceimpl;
 
+import com.macoredroid.onlinebookstore.dao.UserDao;
 import com.macoredroid.onlinebookstore.entity.Booklist;
 import com.macoredroid.onlinebookstore.entity.Cart;
 import com.macoredroid.onlinebookstore.info.Cartinfo;
@@ -14,9 +15,7 @@ import java.util.List;
 public class GetCartServiceimpl implements GetCartService {
 
     @Autowired
-    private com.macoredroid.onlinebookstore.dao.BooklistDao BooklistDao;
-    @Autowired
-    private com.macoredroid.onlinebookstore.dao.UserDao UserDao;
+    private UserDao UserDao;
     @Override
     public List<Cartinfo> findAllByUsername(String username) {
         List<Cartinfo> resultlist= new ArrayList();
