@@ -2,6 +2,7 @@ package com.macoredroid.onlinebookstore.controller;
 
 import com.macoredroid.onlinebookstore.info.Cartinfo;
 import com.macoredroid.onlinebookstore.service.AddtoCartService;
+import com.macoredroid.onlinebookstore.service.ChangeCartService;
 import com.macoredroid.onlinebookstore.service.GetCartService;
 import com.macoredroid.onlinebookstore.service.RemoveFromCartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class CartController {
     private AddtoCartService AddtoCartService;
     @Autowired
     private RemoveFromCartService RemoveFromCartService;
+    @Autowired
+    private ChangeCartService ChangeCartService;
     @GetMapping(value ="/cart/{username}")
     public List<Cartinfo> findUser(@PathVariable("username") String username)
     {
@@ -42,6 +45,18 @@ public class CartController {
        public boolean removefromCart(@PathVariable("id") String id)
     {
         if(RemoveFromCartService.RemoveFromCart(Integer.parseInt(id)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    @GetMapping(value="/cart/change/{id}/number/{number}")
+    public boolean changeCart(@PathVariable("id") String id,@PathVariable("number") String number)
+    {
+        if(ChangeCartService.ChangeCart(Integer.parseInt(id),Integer.parseInt(number)))
         {
             return true;
         }
