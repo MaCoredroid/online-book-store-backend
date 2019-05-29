@@ -21,4 +21,18 @@ public class OrderDaoimpl implements OrderDao {
     public void save(Order order) {
         OrderRepository.save(order);
     }
+
+    @Override
+    public void remove(Integer id)
+    {
+        OrderRepository.deleteById(id);
+    }
+
+    @Override
+    public Order findOne(Integer id)
+    {
+        return OrderRepository.findById(id).get();
+    }
+
+
 }

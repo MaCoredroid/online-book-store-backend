@@ -7,4 +7,6 @@ import java.util.List;
 public interface OrderDao {
     List<Order> findAllByIsbn(String isbn);
     void save(Order order);
+    void remove(Integer id);
+    Order findOne(Integer id);
 }
