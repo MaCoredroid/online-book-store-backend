@@ -108,5 +108,18 @@ public class Order implements Serializable {
         return result;
     }
 
+    private Order()
+    {
+
+    }
+
+    public Order(String isbn, String time, int number, User owner)
+    {
+        this.isbn=isbn;
+        this.time=time;
+        this.number=number;
+        this.owner=owner;
+    }
+
 
 }
