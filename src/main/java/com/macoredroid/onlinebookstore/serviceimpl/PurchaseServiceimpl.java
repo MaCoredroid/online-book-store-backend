@@ -35,7 +35,7 @@ public class PurchaseServiceimpl implements PurchaseService {
             Booklist tempbook = tempcart.getBook();
             User tempuser = tempcart.getUser();
             int tempOrdernum = tempcart.getNumber();
-            int tempStocknum = tempcart.getNumber();
+            int tempStocknum = tempbook.getStock();
             if (tempStocknum < tempOrdernum)
             {
                 return false;
