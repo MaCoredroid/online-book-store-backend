@@ -41,13 +41,14 @@ public class DirectlyOrderServiceimpl implements DirectlyOrderService {
         else
         {
             tempBook.setStock(tempStocknum-tempOrdernum);
-            booklistDao.save(tempBook);
             Order temporder=new Order(isbn,time,tempOrdernum,tempUser);
+
             List<Order> tempOrderList=tempUser.getOrders();
             tempOrderList.add(temporder);
             tempUser.setOrders(tempOrderList);
-            userDao.save(tempUser);
             orderDao.save(temporder);
+            booklistDao.save(tempBook);
+            userDao.save(tempUser);
             return true;
         }
 
