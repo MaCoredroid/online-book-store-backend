@@ -3,6 +3,7 @@ package com.macoredroid.onlinebookstore.controller;
 import com.macoredroid.onlinebookstore.entity.Booklist;
 import com.macoredroid.onlinebookstore.info.bookinfo;
 import com.macoredroid.onlinebookstore.service.BooklistService;
+import com.macoredroid.onlinebookstore.service.DirectlyOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,8 @@ import java.util.List;
 public class BooklistController {
     @Autowired
     private BooklistService BooklistService;
+    @Autowired
+    private DirectlyOrderService DirectlyOrderService;
     @GetMapping(value = "/findEvent/{id}")
     public Booklist findEvent(@PathVariable("id") Integer id) {
         System.out.println("Searching Book: " + id);
@@ -45,6 +48,11 @@ public class BooklistController {
         }
         return isbnlist;
 
+    }
+    @GetMapping(value="/booklist/diredtlyOrder/username/{username}/isbn/{isbn}/number/{number}/time/{time}")
+    public boolean directOrder(@PathVariable("username") String username,@PathVariable("isbn") String isbn,@PathVariable("number") String number,@PathVariable("time") String time)
+    {
+        return DirectlyOrderService.DirectlyOrder(username, isbn, number, time);
     }
 
 
