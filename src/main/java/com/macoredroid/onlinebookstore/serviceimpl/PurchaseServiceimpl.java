@@ -16,13 +16,13 @@ import java.util.List;
 @Service
 public class PurchaseServiceimpl implements PurchaseService {
     @Autowired
-    BooklistDao booklistDao;
+    private BooklistDao booklistDao;
     @Autowired
-    CartDao cartDao;
+    private CartDao cartDao;
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
     @Autowired
-    OrderDao orderDao;
+    private OrderDao orderDao;
     @Override
     public boolean Purchase(int CartID,String time) {
         Cart tempcart= cartDao.findOne(CartID);

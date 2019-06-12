@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ChangeCartServiceimpl implements ChangeCartService {
     @Autowired
-    CartDao cartDao;
+    private CartDao cartDao;
     @Override
     public boolean ChangeCart(int CartID, int number) {
         Cart tempcart= cartDao.findOne(CartID);

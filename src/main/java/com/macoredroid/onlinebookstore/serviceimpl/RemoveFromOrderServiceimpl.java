@@ -15,7 +15,7 @@ public class RemoveFromOrderServiceimpl implements RemoveFromOrderService {
     @Autowired
     private OrderDao OrderDao;
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
     @Override
     public boolean RemoveFromOrder(Integer id) {
         Order tempOrder=OrderDao.findOne(id);

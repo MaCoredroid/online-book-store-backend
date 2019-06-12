@@ -19,7 +19,6 @@ public class BooklistDaoimpl implements BooklistDao {
 
     @Override
     public Booklist findByIsbn(String isbn) {
-        System.out.println(isbn);
         return BooklistRepository.findByIsbn(isbn);
     }
 

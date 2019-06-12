@@ -14,11 +14,11 @@ import java.util.List;
 @Service
 public class RemoveFromCartServiceimpl implements RemoveFromCartService {
     @Autowired
-    BooklistDao booklistDao;
+    private BooklistDao booklistDao;
     @Autowired
-    CartDao cartDao;
+    private CartDao cartDao;
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
     @Override
     public boolean RemoveFromCart(int CartID) {
         Cart tempcart= cartDao.findOne(CartID);

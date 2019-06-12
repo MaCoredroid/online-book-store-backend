@@ -15,11 +15,11 @@ import java.util.List;
 @Service
 public class DirectlyOrderServiceimpl implements DirectlyOrderService {
     @Autowired
-    BooklistDao booklistDao;
+    private BooklistDao booklistDao;
     @Autowired
-    OrderDao orderDao;
+    private OrderDao orderDao;
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
     @Override
     public boolean DirectlyOrder(String username, String isbn, String number, String time) {
         Booklist tempBook=booklistDao.findByIsbn(isbn);

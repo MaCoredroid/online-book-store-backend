@@ -4,12 +4,13 @@ import com.macoredroid.onlinebookstore.dao.OrderDao;
 import com.macoredroid.onlinebookstore.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.macoredroid.onlinebookstore.repository.OrderRepository;
 
 import java.util.List;
 @Repository
 public class OrderDaoimpl implements OrderDao {
     @Autowired
-    private com.macoredroid.onlinebookstore.repository.OrderRepository OrderRepository;
+    private OrderRepository OrderRepository;
 
 
     @Override

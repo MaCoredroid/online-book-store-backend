@@ -20,14 +20,29 @@ public class OrderController {
     @GetMapping(value ="/order/getorder/{username}")
     public List<Orderinfo> findUser(@PathVariable("username") String username)
     {
-        System.out.println("User Tried to get orders: "+username);
         return  GetOrderService.findAllByUsername(username);
     }
     @GetMapping(value="/order/removeorder/{id}")
     public boolean RemoveOrder(@PathVariable("id") String id)
     {
-        System.out.println("Order will be removed:"+id);
         return RemoveFromOrderService.RemoveFromOrder(Integer.parseInt(id));
+    }
+    @GetMapping(value="/order/clearall/username/{username}/username/{username}")
+    public boolean clearAll(@PathVariable("username") String username)
+    {
+         List<Orderinfo> Orders= GetOrderService.findAllByUsername(username);
+         for(Orderinfo tempOrder:Orders)
+         {
+             if(RemoveFromOrderService.RemoveFromOrder(Integer.parseInt(tempOrder.OrderID)))
+             {
+
+             }
+             else
+             {
+                 return false;
+             }
+         }
+         return true;
     }
 
 }

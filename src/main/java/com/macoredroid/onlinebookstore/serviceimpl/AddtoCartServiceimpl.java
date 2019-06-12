@@ -14,11 +14,11 @@ import java.util.List;
 @Service
 public class AddtoCartServiceimpl implements AddtoCartService {
     @Autowired
-    BooklistDao booklistDao;
+    private BooklistDao booklistDao;
     @Autowired
-    CartDao cartDao;
+    private CartDao cartDao;
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
     @Override
     public Boolean AddtoCart(String time, int number, String isbn, String username) {
         Booklist tempBook=booklistDao.findByIsbn(isbn);
