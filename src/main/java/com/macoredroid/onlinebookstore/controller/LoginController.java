@@ -13,7 +13,6 @@ public class LoginController {
     @GetMapping(value ="/login/{username}/password/{password}")
     public Boolean findUser(@PathVariable("username") String username, @PathVariable("password") String password)
     {
-        System.out.println("User Tried to login in: "+username);
         if(LoginService.findbyUsername(username)!=null)
         {
             if(LoginService.findbyUsername(username).getPassword().equals(password))

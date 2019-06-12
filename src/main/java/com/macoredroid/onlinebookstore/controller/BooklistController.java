@@ -20,14 +20,12 @@ public class BooklistController {
     private DirectlyOrderService DirectlyOrderService;
     @GetMapping(value = "/findEvent/{id}")
     public Booklist findEvent(@PathVariable("id") Integer id) {
-        System.out.println("Searching Book: " + id);
         return BooklistService.findBookByID(id);
     }
     @GetMapping(value="/Booklist/{isbn}")
     public bookinfo findbyIsbn(@PathVariable("isbn") String isbn)
     {
         isbn=isbn.replaceAll("[^\\x00-\\x7F]", "");
-        System.out.println("Print book by isbn:");
         return BooklistService.findByIsbn(isbn);
 
     }
@@ -40,7 +38,6 @@ public class BooklistController {
     @GetMapping(value="/isbnlist")
     public List<String> findAllisbn()
     {
-        System.out.println("Print all books:");
         List<bookinfo> temp=BooklistService.findAll();
         List<String> isbnlist=new ArrayList<>();
         for (int i = 0; i < temp.size(); i++) {

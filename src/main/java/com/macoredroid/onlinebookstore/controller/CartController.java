@@ -25,7 +25,6 @@ public class CartController {
     @GetMapping(value ="/cart/{username}")
     public List<Cartinfo> findUser(@PathVariable("username") String username)
     {
-        System.out.println("User Tried to get carts: "+username);
         return  GetCartService.findAllByUsername(username);
     }
     @GetMapping(value ="/cart/username/{username}/isbn/{isbn}/number/{number}/time/{time}")
@@ -75,5 +74,22 @@ public class CartController {
         {
             return false;
         }
+    }
+    @GetMapping(value="/cart/clearall/username/{username}/username/{username}")
+    public boolean clearAll(@PathVariable("username") String username)
+    {
+        List<Cartinfo> Carts = GetCartService.findAllByUsername(username);
+        for(Cartinfo tempCart:Carts)
+        {
+            if(RemoveFromCartService.RemoveFromCart(Integer.parseInt(tempCart.CartID)))
+            {
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
