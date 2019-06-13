@@ -29,4 +29,16 @@ public class ChangeUserServiceimpl implements ChangeUserService {
         UserDao.save(tempUser);
         return true;
     }
+
+    @Override
+    public boolean ChangePassword(String username, String newpassword) {
+        User tempUser= UserDao.findOne(username);
+        if(tempUser==null)
+        {
+            return false;
+        }
+        tempUser.setPassword(newpassword);
+        UserDao.save(tempUser);
+        return true;
+    }
 }

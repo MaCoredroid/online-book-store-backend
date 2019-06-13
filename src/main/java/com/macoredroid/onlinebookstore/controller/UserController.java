@@ -69,6 +69,12 @@ public class UserController {
     {
         return ChangeUserService.ChangeEmail(username,newemail);
     }
+    @GetMapping(value="/userprofile/change/username/{username}/newpassword/{newpassword}")
+    public boolean ChangeUserPassword(@PathVariable("username") String username,@PathVariable("newpassword") String newpassword)
+    {
+        return ChangeUserService.ChangePassword(username, newpassword);
+    }
+
 
 
 
