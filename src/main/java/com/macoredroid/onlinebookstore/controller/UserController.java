@@ -1,6 +1,7 @@
 package com.macoredroid.onlinebookstore.controller;
 
 import com.macoredroid.onlinebookstore.info.Userinfo;
+import com.macoredroid.onlinebookstore.service.ChangeUserService;
 import com.macoredroid.onlinebookstore.service.GetUserProfileService;
 import com.macoredroid.onlinebookstore.service.LoginService;
 import com.macoredroid.onlinebookstore.service.RegisterService;
@@ -18,6 +19,8 @@ public class UserController {
     private RegisterService RegisterService;
     @Autowired
     private GetUserProfileService GetUserProfileService;
+    @Autowired
+    private ChangeUserService ChangeUserService;
     @GetMapping(value ="/login/{username}/password/{password}")
     public Boolean findUser(@PathVariable("username") String username, @PathVariable("password") String password)
     {
@@ -45,6 +48,28 @@ public class UserController {
     {
         return GetUserProfileService.GetUserProfile(username);
     }
+    @GetMapping(value="/userprofile/change/username/{username}/newusername/{newusername}")
+    public boolean ChangeUsername(@PathVariable("username") String username,@PathVariable("newusername") String newusername)
+    {
+        if(LoginService.findbyUsername(username)!=null)
+        {
+            if(LoginService.findbyUsername(newusername)==null)
+            {
+                return ChangeUserService.ChangeUsername(username, newusername);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+    @GetMapping(value="/userprofile/change/username/{username}/newemail/{newemail}")
+    public boolean ChangeUserEmail(@PathVariable("username") String username,@PathVariable("newemail") String newemail)
+    {
+        return ChangeUserService.ChangeEmail(username,newemail);
+    }
+
 
 
 }
