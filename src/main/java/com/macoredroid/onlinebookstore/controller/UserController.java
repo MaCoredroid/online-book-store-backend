@@ -1,14 +1,14 @@
 package com.macoredroid.onlinebookstore.controller;
 
 import com.macoredroid.onlinebookstore.info.Userinfo;
-import com.macoredroid.onlinebookstore.service.ChangeUserService;
-import com.macoredroid.onlinebookstore.service.GetUserProfileService;
-import com.macoredroid.onlinebookstore.service.LoginService;
-import com.macoredroid.onlinebookstore.service.RegisterService;
+import com.macoredroid.onlinebookstore.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @RestController
@@ -21,17 +21,31 @@ public class UserController {
     private GetUserProfileService GetUserProfileService;
     @Autowired
     private ChangeUserService ChangeUserService;
+    @Autowired
+    private SeeAllUsers SeeAllUsers;
     @GetMapping(value ="/login/{username}/password/{password}")
-    public Boolean findUser(@PathVariable("username") String username, @PathVariable("password") String password)
+    @ResponseBody
+    public String findUser(@PathVariable("username") String username, @PathVariable("password") String password)
     {
         if(LoginService.findbyUsername(username)!=null)
         {
             if(LoginService.findbyUsername(username).getPassword().equals(password))
             {
-                return true;
+                if(LoginService.findbyUsername(username).getStar()==2)
+                {
+                    return "user";
+                }
+                if(LoginService.findbyUsername(username).getStar()==1)
+                {
+                    return "admin";
+                }
+                if(LoginService.findbyUsername(username).getStar()==0)
+                {
+                    return "root";
+                }
             }
         }
-        return false;
+        return "false";
     }
     @GetMapping(value ="/register/username/{username}/password/{password}/email/{email}/star/{star}")
     public Boolean RegisterUser(@PathVariable("username") String username, @PathVariable("password") String password,@PathVariable("email") String email,@PathVariable("star") String star)
@@ -73,6 +87,11 @@ public class UserController {
     public boolean ChangeUserPassword(@PathVariable("username") String username,@PathVariable("newpassword") String newpassword)
     {
         return ChangeUserService.ChangePassword(username, newpassword);
+    }
+    @GetMapping(value="/admin/seeAllUser")
+    public List<Userinfo> SeeAllUsers()
+    {
+        return SeeAllUsers.SeeAllUsers();
     }
 
 
