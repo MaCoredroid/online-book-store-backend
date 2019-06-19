@@ -6,6 +6,8 @@ import com.macoredroid.onlinebookstore.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class CartDaoimpl implements CartDao {
     @Autowired
@@ -25,6 +27,11 @@ public class CartDaoimpl implements CartDao {
     @Override
     public void remove(Integer id) {
         CartRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Cart> findAll() {
+        return CartRepository.findAll();
     }
 
 

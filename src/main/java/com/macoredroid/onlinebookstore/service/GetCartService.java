@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface GetCartService {
     List<Cartinfo> findAllByUsername(String username);
+    List<Cartinfo> findAll();
 }

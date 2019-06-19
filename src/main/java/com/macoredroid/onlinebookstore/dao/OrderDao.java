@@ -9,4 +9,5 @@ public interface OrderDao {
     void save(Order order);
     void remove(Integer id);
     Order findOne(Integer id);
+    List<Order> findAll();
 }

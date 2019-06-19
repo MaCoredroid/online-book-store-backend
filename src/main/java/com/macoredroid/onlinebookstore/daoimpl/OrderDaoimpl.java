@@ -35,5 +35,10 @@ public class OrderDaoimpl implements OrderDao {
         return OrderRepository.findById(id).get();
     }
 
+    @Override
+    public List<Order> findAll() {
+        return OrderRepository.findAll();
+    }
+
 
 }

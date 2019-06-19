@@ -6,6 +6,8 @@ import com.macoredroid.onlinebookstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class UserDaoimpl implements UserDao {
 
@@ -26,5 +28,15 @@ public class UserDaoimpl implements UserDao {
     @Override
     public void save(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public void remove(Integer id) {
+        userRepository.deleteById(id);
     }
 }
