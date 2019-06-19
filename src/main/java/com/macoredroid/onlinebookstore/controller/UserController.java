@@ -29,35 +29,19 @@ public class UserController {
     @ResponseBody
     public String findUser(@PathVariable("username") String username, @PathVariable("password") String password)
     {
-        if(LoginService.findbyUsername(username)!=null)
-        {
-            if(LoginService.findbyUsername(username).getPassword().equals(password))
-            {
-                if(LoginService.findbyUsername(username).getStar()==2)
-                {
-                    return "user";
-                }
-                if(LoginService.findbyUsername(username).getStar()==1)
-                {
-                    return "admin";
-                }
-                if(LoginService.findbyUsername(username).getStar()==0)
-                {
-                    return "root";
-                }
-            }
-        }
-        return "false";
+        return LoginService.Login(username, password);
     }
     @GetMapping(value ="/register/username/{username}/password/{password}/email/{email}/star/{star}")
     public Boolean RegisterUser(@PathVariable("username") String username, @PathVariable("password") String password,@PathVariable("email") String email,@PathVariable("star") String star)
     {
-
-        if(RegisterService.Register(username,password,email,Integer.parseInt(star)))
+        if(!LoginService.findDuplicateUsername(username))
         {
-            return true;
+            return (RegisterService.Register(username, password, email, Integer.parseInt(star)));
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
     @GetMapping(value="/userprofile/username/{username}")
     public Userinfo GetUserProfile(@PathVariable("username") String username)
@@ -67,9 +51,9 @@ public class UserController {
     @GetMapping(value="/userprofile/change/username/{username}/newusername/{newusername}")
     public boolean ChangeUsername(@PathVariable("username") String username,@PathVariable("newusername") String newusername)
     {
-        if(LoginService.findbyUsername(username)!=null)
+        if(!LoginService.findDuplicateUsername(username))
         {
-            if(LoginService.findbyUsername(newusername)==null)
+            if(!LoginService.findDuplicateUsername(newusername))
             {
                 return ChangeUserService.ChangeUsername(username, newusername);
             }
