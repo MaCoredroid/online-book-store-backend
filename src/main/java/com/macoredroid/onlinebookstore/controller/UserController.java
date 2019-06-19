@@ -23,6 +23,8 @@ public class UserController {
     private ChangeUserService ChangeUserService;
     @Autowired
     private SeeAllUsers SeeAllUsers;
+    @Autowired
+    private UnsubscribeService UnsubscribeService;
     @GetMapping(value ="/login/{username}/password/{password}")
     @ResponseBody
     public String findUser(@PathVariable("username") String username, @PathVariable("password") String password)
@@ -92,6 +94,11 @@ public class UserController {
     public List<Userinfo> SeeAllUsers()
     {
         return SeeAllUsers.SeeAllUsers();
+    }
+    @GetMapping(value="/userprofile/unsubscribe/username/{username}")
+    public boolean Unsubscribe(@PathVariable("username") String username)
+    {
+        return UnsubscribeService.Unsubscribe(username);
     }
 
 

@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class SeeAllUsersimpl implements SeeAllUsers {
     @Autowired
-    UserDao UserDao;
+    private UserDao UserDao;
     @Override
     public List<Userinfo> SeeAllUsers() {
         List<User> tempUserlist=UserDao.findAll();

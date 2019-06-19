@@ -34,4 +34,9 @@ public class UserDaoimpl implements UserDao {
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
+    @Override
+    public void remove(Integer id) {
+        userRepository.deleteById(id);
+    }
 }

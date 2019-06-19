@@ -10,4 +10,5 @@ public interface UserDao {
     void save(String username,String password,String email,int star);
     void save(User user);
     List<User> findAll();
+    void remove(Integer id);
 }
