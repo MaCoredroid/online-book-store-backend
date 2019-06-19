@@ -7,7 +7,8 @@ public class bookinfo {
     public Double price;
     public String isbn;
     public int stock;
-    public bookinfo(int booklistID,String name,String author,Double price,String isbn,int stock)
+    public int sales;
+    public bookinfo(int booklistID,String name,String author,Double price,String isbn,int stock,int sales)
     {
         this.booklistID=booklistID;
         this.name=name;
@@ -15,6 +16,7 @@ public class bookinfo {
         this.price=price;
         this.isbn=isbn;
         this.stock=stock;
+        this.sales=sales;
     }
 
 }
