@@ -44,5 +44,11 @@ public class OrderController {
          }
          return true;
     }
+    @GetMapping(value="/admin/seeAllOrder")
+    public List<Orderinfo> findAllOrder()
+    {
+        return GetOrderService.findAll();
+    }
+
 
 }

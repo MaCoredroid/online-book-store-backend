@@ -92,4 +92,10 @@ public class CartController {
         }
         return true;
     }
+    @GetMapping(value="/admin/seeAllCart")
+    public List<Cartinfo> findAllCart()
+    {
+        return GetCartService.findAll();
+    }
+
 }
