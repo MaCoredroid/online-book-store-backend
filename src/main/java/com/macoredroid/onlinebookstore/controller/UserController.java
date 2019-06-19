@@ -25,6 +25,8 @@ public class UserController {
     private SeeAllUsers SeeAllUsers;
     @Autowired
     private UnsubscribeService UnsubscribeService;
+    @Autowired
+    private BlockUserService BlockUserService;
     @GetMapping(value ="/login/{username}/password/{password}")
     @ResponseBody
     public String findUser(@PathVariable("username") String username, @PathVariable("password") String password)
@@ -83,6 +85,16 @@ public class UserController {
     public boolean Unsubscribe(@PathVariable("username") String username)
     {
         return UnsubscribeService.Unsubscribe(username);
+    }
+    @GetMapping(value="/admin/block/{username}")
+    public boolean BlockUser(@PathVariable("username") String username)
+    {
+        return BlockUserService.BlockUserService(username);
+    }
+    @GetMapping(value="/admin/unblock/{username}")
+    public boolean UnBlockUser(@PathVariable("username") String username)
+    {
+        return BlockUserService.UnBlockUserService(username);
     }
 
 

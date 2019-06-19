@@ -18,7 +18,7 @@ public class GetUserProfileServiceimpl implements GetUserProfileService {
         {
             return null;
         }
-        Userinfo res=new Userinfo(tempUser.getUserID(),tempUser.getEmail(),tempUser.getUsername());
+        Userinfo res=new Userinfo(tempUser.getUserID(),tempUser.getEmail(),tempUser.getUsername(),true);
         return res;
     }
 }

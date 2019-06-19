@@ -21,7 +21,12 @@ public class SeeAllUsersimpl implements SeeAllUsers {
         {
             if(tempUser.getStar()==2)
             {
-                Userinfo tempinfo= new Userinfo(tempUser.getUserID(),tempUser.getEmail(),tempUser.getUsername());
+                Userinfo tempinfo= new Userinfo(tempUser.getUserID(),tempUser.getEmail(),tempUser.getUsername(),true);
+                reslist.add(tempinfo);
+            }
+            else
+            {
+                Userinfo tempinfo= new Userinfo(tempUser.getUserID(),tempUser.getEmail(),tempUser.getUsername(),false);
                 reslist.add(tempinfo);
             }
         }
