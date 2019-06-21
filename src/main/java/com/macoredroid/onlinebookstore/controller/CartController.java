@@ -3,6 +3,7 @@ package com.macoredroid.onlinebookstore.controller;
 import com.macoredroid.onlinebookstore.info.Cartinfo;
 import com.macoredroid.onlinebookstore.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,11 +23,13 @@ public class CartController {
     private ChangeCartService ChangeCartService;
     @Autowired
     private PurchaseService PurchaseService;
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/cart/{username}")
     public List<Cartinfo> findUser(@PathVariable("username") String username)
     {
         return  GetCartService.findAllByUsername(username);
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/cart/username/{username}/isbn/{isbn}/number/{number}/time/{time}")
     public boolean addtoCart(@PathVariable("username") String username,@PathVariable("isbn") String isbn,@PathVariable("number") String number,@PathVariable("time") String time)
     {
@@ -39,8 +42,9 @@ public class CartController {
             return false;
         }
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/cart/remove/{id}")
-       public boolean removefromCart(@PathVariable("id") String id)
+    public boolean removefromCart(@PathVariable("id") String id)
     {
         if(RemoveFromCartService.RemoveFromCart(Integer.parseInt(id)))
         {
@@ -51,6 +55,7 @@ public class CartController {
             return false;
         }
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/cart/change/{id}/number/{number}")
     public boolean changeCart(@PathVariable("id") String id,@PathVariable("number") String number)
     {
@@ -63,6 +68,7 @@ public class CartController {
             return false;
         }
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/cart/purchase/{id}/time/{time}")
     public boolean purchaseCart(@PathVariable("id") String id,@PathVariable("time") String time)
     {
@@ -75,6 +81,7 @@ public class CartController {
             return false;
         }
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/cart/clearall/username/{username}/username/{username}")
     public boolean clearAll(@PathVariable("username") String username)
     {
@@ -92,6 +99,7 @@ public class CartController {
         }
         return true;
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/admin/seeAllCart")
     public List<Cartinfo> findAllCart()
     {

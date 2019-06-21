@@ -2,10 +2,7 @@ package com.macoredroid.onlinebookstore.controller;
 
 
 import org.apache.commons.io.IOUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +10,7 @@ import java.io.InputStream;
 
 @RestController
 public class ImageController {
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/image/{isbn}")
     public @ResponseBody byte[] getImage(@PathVariable("isbn") String isbn) throws IOException
     {
