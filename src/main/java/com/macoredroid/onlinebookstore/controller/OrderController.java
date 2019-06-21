@@ -4,6 +4,7 @@ import com.macoredroid.onlinebookstore.info.Orderinfo;
 import com.macoredroid.onlinebookstore.service.GetOrderService;
 import com.macoredroid.onlinebookstore.service.RemoveFromOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,16 +18,19 @@ public class OrderController {
     private GetOrderService GetOrderService;
     @Autowired
     private RemoveFromOrderService RemoveFromOrderService;
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/order/getorder/{username}")
     public List<Orderinfo> findUser(@PathVariable("username") String username)
     {
         return  GetOrderService.findAllByUsername(username);
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/order/removeorder/{id}")
     public boolean RemoveOrder(@PathVariable("id") String id)
     {
         return RemoveFromOrderService.RemoveFromOrder(Integer.parseInt(id));
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/order/clearall/username/{username}/username/{username}")
     public boolean clearAll(@PathVariable("username") String username)
     {
@@ -44,6 +48,7 @@ public class OrderController {
          }
          return true;
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/admin/seeAllOrder")
     public List<Orderinfo> findAllOrder()
     {

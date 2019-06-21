@@ -41,13 +41,17 @@ public class LoginServiceimpl implements LoginService {
         }
         else
         {
-            if(tempUser.getPassword().equals(password))
+            if(tempUser.getStar()==-1)
             {
-                return "User";
+                return "Blocked";
             }
             else
             {
-                return "false";
+                if (tempUser.getPassword().equals(password)) {
+                    return "User";
+                } else {
+                    return "false";
+                }
             }
         }
     }
