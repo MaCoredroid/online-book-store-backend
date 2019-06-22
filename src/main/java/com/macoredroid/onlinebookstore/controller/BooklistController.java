@@ -3,6 +3,7 @@ package com.macoredroid.onlinebookstore.controller;
 import com.macoredroid.onlinebookstore.entity.Booklist;
 import com.macoredroid.onlinebookstore.info.bookinfo;
 import com.macoredroid.onlinebookstore.service.BooklistService;
+import com.macoredroid.onlinebookstore.service.ChangeBookService;
 import com.macoredroid.onlinebookstore.service.DirectlyOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +18,8 @@ import java.util.List;
 public class BooklistController {
     @Autowired
     private BooklistService BooklistService;
+    @Autowired
+    private ChangeBookService ChangeBookService;
     @Autowired
     private DirectlyOrderService DirectlyOrderService;
     @CrossOrigin(origins = "http://localhost:3000")
@@ -58,6 +61,14 @@ public class BooklistController {
     {
         return DirectlyOrderService.DirectlyOrder(username, isbn, number, time);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/change/bookID/{bookID}/newbookname/{newbookname}")
+    public boolean changeName(@PathVariable("bookID") String bookID,@PathVariable("newbookname") String newbookname)
+    {
+        return ChangeBookService.changeName(bookID, newbookname);
+    }
+
 
 
 }
