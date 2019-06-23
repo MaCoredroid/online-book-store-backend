@@ -10,9 +10,10 @@ public class Orderinfo {
     public int price;
     public int userid;
     public String username;
+    public int bookid;
 
 
-     public Orderinfo(String timestamp,int OrderID,String isbn,int number,String name, String author,int price,String username,int userid)
+     public Orderinfo(String timestamp,int OrderID,String isbn,int number,String name, String author,int price,String username,int userid, int bookid)
     {
         this.timestamp=timestamp;
         this.OrderID=OrderID;
@@ -23,5 +24,6 @@ public class Orderinfo {
         this.price=price;
         this.username=username;
         this.userid=userid;
+        this.bookid=bookid;
     }
 }

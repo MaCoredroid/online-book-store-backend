@@ -19,6 +19,7 @@ public class Order implements Serializable {
     private String time;
     private int number;
     private int userid;
+    private int bookid;
     private String username;
     private String name;
     private String author;
@@ -30,8 +31,12 @@ public class Order implements Serializable {
     @Column(name = "orderid")
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     public int getOrderid() { return orderid; }
-
     public void setOrderid(int orderid) { this.orderid=orderid; }
+
+    @Basic
+    @Column(name= "bookid")
+    public int getBookid() {return bookid;}
+    public void setBookid(int id) {this.bookid=id;}
 
 
 
@@ -106,7 +111,7 @@ public class Order implements Serializable {
         if (!Objects.equals(author, that.author)) return false;
         if (!Objects.equals(price, that.price)) return false;
         if (!Objects.equals(username, that.username)) return false;
-
+        if (!Objects.equals(bookid, that.bookid)) return false;
 
 
         return true;
@@ -123,6 +128,7 @@ public class Order implements Serializable {
         result = 31 * result + number;
         result = 31 * result + userid;
         result = 31 * result + price;
+        result = 31 * result + bookid;
         return result;
     }
 
@@ -131,7 +137,7 @@ public class Order implements Serializable {
 
     }
 
-    public Order(String isbn, String time, int number, int id, String name, String author, int price,String username)
+    public Order(String isbn, String time, int number, int id, String name, String author, int price,String username,int bookid)
     {
         this.isbn=isbn;
         this.time=time;
@@ -141,6 +147,7 @@ public class Order implements Serializable {
         this.author=author;
         this.price=price;
         this.username=username;
+        this.bookid=bookid;
     }
 
 

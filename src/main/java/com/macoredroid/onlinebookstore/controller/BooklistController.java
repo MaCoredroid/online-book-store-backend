@@ -1,6 +1,5 @@
 package com.macoredroid.onlinebookstore.controller;
 
-import com.macoredroid.onlinebookstore.entity.Booklist;
 import com.macoredroid.onlinebookstore.info.bookinfo;
 import com.macoredroid.onlinebookstore.service.BooklistService;
 import com.macoredroid.onlinebookstore.service.ChangeBookService;
@@ -22,18 +21,12 @@ public class BooklistController {
     private ChangeBookService ChangeBookService;
     @Autowired
     private DirectlyOrderService DirectlyOrderService;
+
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(value = "/findEvent/{id}")
-    public Booklist findEvent(@PathVariable("id") Integer id)
+    @GetMapping(value="/Booklist/{id}")
+    public bookinfo findbyId(@PathVariable("id") String id)
     {
-        return BooklistService.findBookByID(id);
-    }
-    @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(value="/Booklist/{isbn}")
-    public bookinfo findbyIsbn(@PathVariable("isbn") String isbn)
-    {
-        isbn=isbn.replaceAll("[^\\x00-\\x7F]", "");
-        return BooklistService.findByIsbn(isbn);
+        return BooklistService.findBookByID(Integer.parseInt(id));
 
     }
     @CrossOrigin(origins = "http://localhost:3000")
@@ -44,15 +37,15 @@ public class BooklistController {
 
     }
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(value="/isbnlist")
-    public List<String> findAllisbn()
+    @GetMapping(value="/bookidlist")
+    public List<String> findAllbookid()
     {
         List<bookinfo> temp=BooklistService.findAll();
-        List<String> isbnlist=new ArrayList<>();
+        List<String> bookidlist=new ArrayList<>();
         for (int i = 0; i < temp.size(); i++) {
-           isbnlist.add(temp.get(i).isbn);
+            bookidlist.add(Integer.toString(temp.get(i).booklistID));
         }
-        return isbnlist;
+        return bookidlist;
 
     }
     @CrossOrigin(origins = "http://localhost:3000")
@@ -74,7 +67,24 @@ public class BooklistController {
     {
         return ChangeBookService.changePrice(bookID, newbookprcie);
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/change/bookID/{bookID}/newauthorname/{newauthorname}")
+    public boolean changeAuthor(@PathVariable("bookID") String bookID,@PathVariable("newauthorname") String newauthorname)
+    {
+        return ChangeBookService.changeAuthor(bookID, newauthorname);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/change/bookID/{bookID}/newstock/{newstock}")
+    public boolean changeStock(@PathVariable("bookID") String bookID,@PathVariable("newstock") String newstock)
+    {
+        return ChangeBookService.changeStock(bookID, newstock);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/change/bookID/{bookID}/newisbn/{newisbn}")
+    public boolean changeIsbn(@PathVariable("bookID") String bookID,@PathVariable("newisbn") String newisbn)
+    {
+        return ChangeBookService.changeIsbn(bookID, newisbn);
+    }
 
 
 }

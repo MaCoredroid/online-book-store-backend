@@ -43,7 +43,7 @@ public class DirectlyOrderServiceimpl implements DirectlyOrderService {
             sales+=tempOrdernum;
             tempBook.setSales(sales);
             booklistDao.save(tempBook);
-            Order temporder=new Order(isbn,time,tempOrdernum,tempUser.getUserID(),tempBook.getName(),tempBook.getAuthor(),tempBook.getPrice(),username);
+            Order temporder=new Order(isbn,time,tempOrdernum,tempUser.getUserID(),tempBook.getName(),tempBook.getAuthor(),tempBook.getPrice(),username,tempBook.getBooklistID());
             orderDao.save(temporder);
             return true;
         }

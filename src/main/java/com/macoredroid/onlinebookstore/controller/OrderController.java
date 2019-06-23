@@ -22,11 +22,20 @@ public class OrderController {
         return  GetOrderService.findAllByUsername(username);
     }
     @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value ="/order/id/{id}")
+    public Orderinfo findByID(@PathVariable("id") String id)
+    {
+        return  GetOrderService.findOne(Integer.parseInt(id));
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/admin/seeAllOrder")
     public List<Orderinfo> findAllOrder()
     {
         return GetOrderService.findAll();
     }
+
+
 
 
 }

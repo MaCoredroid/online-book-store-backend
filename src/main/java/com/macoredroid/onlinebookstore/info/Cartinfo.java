@@ -8,11 +8,12 @@ public class Cartinfo {
     public String name;
     public String author;
     public int price;
+    public int bookid;
     public String username;
 
 
 
-    public Cartinfo(String timestamp,String CartID,String isbn,int number,String author,int price,String name,String username)
+    public Cartinfo(String timestamp,String CartID,String isbn,int number,String author,int price,String name,String username,int bookid)
     {
         this.timestamp=timestamp;
         this.CartID=CartID;
@@ -22,5 +23,6 @@ public class Cartinfo {
         this.name=name;
         this.price=price;
         this.username=username;
+        this.bookid=bookid;
     }
 }
