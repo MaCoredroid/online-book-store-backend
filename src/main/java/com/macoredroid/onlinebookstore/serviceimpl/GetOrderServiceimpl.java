@@ -32,7 +32,7 @@ public class GetOrderServiceimpl implements GetOrderService {
         }
         List<Order> templist= OrderDao.findAllByUserid(tempUser.getUserID());
         for(Order temporder:templist) {
-            resultlist.add(new Orderinfo(temporder.getTime(),temporder.getOrderid(),temporder.getIsbn(),temporder.getNumber(),temporder.getAuthor(),temporder.getName(),temporder.getPrice(),username,temporder.getUserid()));
+            resultlist.add(new Orderinfo(temporder.getTime(),temporder.getOrderid(),temporder.getIsbn(),temporder.getNumber(),temporder.getAuthor(),temporder.getName(),temporder.getPrice(),username,temporder.getUserid(),temporder.getBookid()));
         }
 
         return resultlist;
@@ -43,7 +43,7 @@ public class GetOrderServiceimpl implements GetOrderService {
         List<Orderinfo> resultlist= new ArrayList();
         List<Order> templist= OrderDao.findAll();
         for(Order temporder:templist) {
-            resultlist.add(new Orderinfo(temporder.getTime(),temporder.getOrderid(),temporder.getIsbn(),temporder.getNumber(),temporder.getAuthor(),temporder.getName(),temporder.getPrice(),temporder.getUsername(),temporder.getUserid()));
+            resultlist.add(new Orderinfo(temporder.getTime(),temporder.getOrderid(),temporder.getIsbn(),temporder.getNumber(),temporder.getAuthor(),temporder.getName(),temporder.getPrice(),temporder.getUsername(),temporder.getUserid(),temporder.getBookid()));
         }
         return resultlist;
     }
