@@ -67,7 +67,24 @@ public class BooklistController {
     {
         return ChangeBookService.changePrice(bookID, newbookprcie);
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/change/bookID/{bookID}/newauthorname/{newauthorname}")
+    public boolean changeAuthor(@PathVariable("bookID") String bookID,@PathVariable("newauthorname") String newauthorname)
+    {
+        return ChangeBookService.changeAuthor(bookID, newauthorname);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/change/bookID/{bookID}/newstock/{newstock}")
+    public boolean changeStock(@PathVariable("bookID") String bookID,@PathVariable("newstock") String newstock)
+    {
+        return ChangeBookService.changeStock(bookID, newstock);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/change/bookID/{bookID}/newisbn/{newisbn}")
+    public boolean changeIsbn(@PathVariable("bookID") String bookID,@PathVariable("newisbn") String newisbn)
+    {
+        return ChangeBookService.changeIsbn(bookID, newisbn);
+    }
 
 
 }

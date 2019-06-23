@@ -18,7 +18,14 @@ public class ImageController {
         String temp="image/"+bookid+".png";
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         InputStream in = classLoader.getResourceAsStream(temp);
-        return IOUtils.toByteArray(in);
+        if( in!=null)
+        {
+            return IOUtils.toByteArray(in);
+        }
+        else
+        {
+            return null;
+        }
     }
 
 }

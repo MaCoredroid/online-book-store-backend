@@ -48,4 +48,65 @@ public class ChangeBookServiceimpl implements ChangeBookService {
             return true;
         }
     }
+
+    @Override
+    public boolean changeAuthor(String bookID, String newauthorname) {
+        Booklist oldBook= BooklistDao.findOne(Integer.parseInt(bookID));
+        if(oldBook==null)
+        {
+            return false;
+        }
+        else
+        {
+            oldBook.setAuthor(newauthorname);
+            BooklistDao.save(oldBook);
+            return true;
+        }
+    }
+
+    @Override
+    public boolean changeStock(String bookID, String newstock)
+    {
+        Booklist oldBook= BooklistDao.findOne(Integer.parseInt(bookID));
+        if(oldBook==null)
+        {
+            return false;
+        }
+        else
+        {
+            if (Integer.parseInt(newstock) > 0)
+            {
+                oldBook.setStock(Integer.parseInt(newstock));
+                BooklistDao.save(oldBook);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    @Override
+    public boolean changeIsbn(String bookID, String isbn) {
+        Booklist oldBook= BooklistDao.findOne(Integer.parseInt(bookID));
+        if(oldBook==null)
+        {
+            return false;
+        }
+        else
+        {
+            Booklist temp=BooklistDao.findByIsbn(isbn);
+            if(temp!=null)
+            {
+                return false;
+            }
+            else
+            {
+                oldBook.setIsbn(isbn);
+                BooklistDao.save(oldBook);
+                return true;
+            }
+        }
+    }
 }
