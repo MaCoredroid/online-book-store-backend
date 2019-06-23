@@ -47,4 +47,18 @@ public class GetOrderServiceimpl implements GetOrderService {
         }
         return resultlist;
     }
+
+    @Override
+    public Orderinfo findOne(int id) {
+        Order temporder=OrderDao.findOne(id);
+        if(temporder==null)
+        {
+            return null;
+        }
+        else
+        {
+            Orderinfo res = new Orderinfo(temporder.getTime(), temporder.getOrderid(), temporder.getIsbn(), temporder.getNumber(), temporder.getAuthor(), temporder.getName(), temporder.getPrice(), temporder.getUsername(), temporder.getUserid(), temporder.getBookid());
+            return res;
+        }
+    }
 }

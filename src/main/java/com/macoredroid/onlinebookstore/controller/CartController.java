@@ -24,10 +24,17 @@ public class CartController {
     @Autowired
     private PurchaseService PurchaseService;
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(value ="/cart/{username}")
-    public List<Cartinfo> findUser(@PathVariable("username") String username)
+    @GetMapping(value ="/cart/username/{username}")
+    public List<Cartinfo> findCartsByUsername(@PathVariable("username") String username)
     {
         return  GetCartService.findAllByUsername(username);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value ="/cart/cartid/{id}")
+    public Cartinfo findCartById(@PathVariable("id") String id)
+    {
+        return  GetCartService.findOne(Integer.parseInt(id));
     }
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/cart/username/{username}/isbn/{isbn}/number/{number}/time/{time}")

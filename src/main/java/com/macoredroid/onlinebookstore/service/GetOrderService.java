@@ -7,4 +7,5 @@ import java.util.List;
 public interface GetOrderService {
     List<Orderinfo> findAllByUsername(String username);
     List<Orderinfo> findAll();
+    Orderinfo findOne(int id);
 }

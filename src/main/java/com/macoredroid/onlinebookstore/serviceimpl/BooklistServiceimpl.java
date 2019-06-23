@@ -19,17 +19,20 @@ public class BooklistServiceimpl implements BooklistService {
     @Autowired
     private OrderDao OrderDao;
     @Override
-    public Booklist findBookByID(Integer id) {
-        return BooklistDao.findOne(id);
+    public bookinfo findBookByID(Integer id)
+    {
+        Booklist tempbook = BooklistDao.findOne(id);
+        if(tempbook==null)
+        {
+            return null;
+        }
+        else
+        {
+            bookinfo tempbookinfo=new bookinfo(tempbook.getBooklistID(),tempbook.getName(),tempbook.getAuthor(),tempbook.getPrice(),tempbook.getIsbn(),tempbook.getStock(),tempbook.getSales());
+            return tempbookinfo;
+        }
     }
 
-    @Override
-    public bookinfo findByIsbn(String isbn) {
-        Booklist tempbook=BooklistDao.findByIsbn(isbn);
-        List<Order> tempOrderlist = OrderDao.findAllByIsbn(isbn);
-        bookinfo result=new bookinfo(tempbook.getBooklistID(),tempbook.getName(),tempbook.getAuthor(),tempbook.getPrice(),tempbook.getIsbn(),tempbook.getStock(),tempbook.getSales());
-        return result;
-    }
 
     @Override
     public List<bookinfo> findAll()
