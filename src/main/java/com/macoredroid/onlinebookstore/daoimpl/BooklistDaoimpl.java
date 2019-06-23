@@ -22,6 +22,11 @@ public class BooklistDaoimpl implements BooklistDao {
         return BooklistRepository.findByIsbn(isbn);
     }
 
+    @Override
+    public Booklist findByName(String name) {
+        return BooklistRepository.findByName(name);
+    }
+
 
     @Override
     public List<Booklist> findAll() {

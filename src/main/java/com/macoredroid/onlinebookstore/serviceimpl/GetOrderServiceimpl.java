@@ -3,8 +3,8 @@ package com.macoredroid.onlinebookstore.serviceimpl;
 import com.macoredroid.onlinebookstore.dao.BooklistDao;
 import com.macoredroid.onlinebookstore.dao.OrderDao;
 import com.macoredroid.onlinebookstore.dao.UserDao;
-import com.macoredroid.onlinebookstore.entity.Booklist;
 import com.macoredroid.onlinebookstore.entity.Order;
+import com.macoredroid.onlinebookstore.entity.User;
 import com.macoredroid.onlinebookstore.info.Orderinfo;
 import com.macoredroid.onlinebookstore.service.GetOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +25,14 @@ public class GetOrderServiceimpl implements GetOrderService {
     @Override
     public List<Orderinfo> findAllByUsername(String username) {
         List<Orderinfo> resultlist= new ArrayList();
-        List<Order> templist= UserDao.findOne(username).getOrders();
+        User tempUser=UserDao.findOne(username);
+        if(tempUser==null)
+        {
+            return null;
+        }
+        List<Order> templist= OrderDao.findAllByUserid(tempUser.getUserID());
         for(Order temporder:templist) {
-            temporder.setIsbn(temporder.getIsbn().replaceAll("[^\\x00-\\x7F]", ""));
-            if(BooklistDao.findByIsbn(temporder.getIsbn())==null)
-            {
-                return null;
-            }
-            Booklist temp= BooklistDao.findByIsbn(temporder.getIsbn());
-            resultlist.add(new Orderinfo(temporder.getTime(),Integer.toString(temporder.getOrderid()),temp.getIsbn(), temporder.getNumber(),temp.getAuthor(),temp.getPrice(), temp.getName(),username));
+            resultlist.add(new Orderinfo(temporder.getTime(),temporder.getOrderid(),temporder.getIsbn(),temporder.getNumber(),temporder.getAuthor(),temporder.getName(),temporder.getPrice(),username,temporder.getUserid()));
         }
 
         return resultlist;
@@ -44,13 +43,7 @@ public class GetOrderServiceimpl implements GetOrderService {
         List<Orderinfo> resultlist= new ArrayList();
         List<Order> templist= OrderDao.findAll();
         for(Order temporder:templist) {
-            temporder.setIsbn(temporder.getIsbn().replaceAll("[^\\x00-\\x7F]", ""));
-            if(BooklistDao.findByIsbn(temporder.getIsbn())==null)
-            {
-                return null;
-            }
-            Booklist temp= BooklistDao.findByIsbn(temporder.getIsbn());
-            resultlist.add(new Orderinfo(temporder.getTime(),Integer.toString(temporder.getOrderid()),temp.getIsbn(), temporder.getNumber(),temp.getAuthor(),temp.getPrice(), temp.getName(),temporder.getOwner().getUsername()));
+            resultlist.add(new Orderinfo(temporder.getTime(),temporder.getOrderid(),temporder.getIsbn(),temporder.getNumber(),temporder.getAuthor(),temporder.getName(),temporder.getPrice(),temporder.getUsername(),temporder.getUserid()));
         }
         return resultlist;
     }

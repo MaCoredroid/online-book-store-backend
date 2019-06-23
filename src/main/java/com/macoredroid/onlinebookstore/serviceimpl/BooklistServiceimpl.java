@@ -27,12 +27,7 @@ public class BooklistServiceimpl implements BooklistService {
     public bookinfo findByIsbn(String isbn) {
         Booklist tempbook=BooklistDao.findByIsbn(isbn);
         List<Order> tempOrderlist = OrderDao.findAllByIsbn(isbn);
-        int sales=0;
-        for(Order tempOrder:tempOrderlist)
-        {
-            sales+=tempOrder.getNumber();
-        }
-        bookinfo result=new bookinfo(tempbook.getBooklistID(),tempbook.getName(),tempbook.getAuthor(),tempbook.getPrice(),tempbook.getIsbn(),tempbook.getStock(),sales);
+        bookinfo result=new bookinfo(tempbook.getBooklistID(),tempbook.getName(),tempbook.getAuthor(),tempbook.getPrice(),tempbook.getIsbn(),tempbook.getStock(),tempbook.getSales());
         return result;
     }
 
@@ -45,12 +40,7 @@ public class BooklistServiceimpl implements BooklistService {
         for(Booklist tempbook:templist)
         {
             List<Order> tempOrderlist = OrderDao.findAllByIsbn(tempbook.getIsbn());
-            int sales=0;
-            for(Order tempOrder:tempOrderlist)
-            {
-                sales+=tempOrder.getNumber();
-            }
-            bookinfo tempbookinfo=new bookinfo(tempbook.getBooklistID(),tempbook.getName(),tempbook.getAuthor(),tempbook.getPrice(),tempbook.getIsbn(),tempbook.getStock(),sales);
+            bookinfo tempbookinfo=new bookinfo(tempbook.getBooklistID(),tempbook.getName(),tempbook.getAuthor(),tempbook.getPrice(),tempbook.getIsbn(),tempbook.getStock(),tempbook.getSales());
             resultlist.add(tempbookinfo);
         }
         return resultlist;

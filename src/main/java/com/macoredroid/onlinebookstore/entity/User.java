@@ -22,7 +22,6 @@ public class User implements Serializable {
     private String email;
     private int star;
     private List<Cart> carts =new ArrayList();
-    private List<Order> orders=new ArrayList();
     private static final long serialVersionUID = 4L;
 
     @Id
@@ -42,16 +41,6 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    @OneToMany(targetEntity = Order.class, mappedBy = "owner",cascade = CascadeType.ALL)
-    public List<Order> getOrders()
-    {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders)
-    {
-        this.orders=orders;
-    }
 
     @OneToMany(targetEntity=Cart.class, mappedBy = "user",cascade = CascadeType.ALL)
     public List<Cart> getCarts()
@@ -137,7 +126,7 @@ public class User implements Serializable {
         this.email=email;
         this.star=star;
         this.carts=new ArrayList<>();
-        this.orders=new ArrayList<>();
+
 
     }
 }

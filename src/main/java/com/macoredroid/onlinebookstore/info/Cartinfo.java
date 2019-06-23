@@ -7,12 +7,12 @@ public class Cartinfo {
     public int    number;
     public String name;
     public String author;
-    public Double price;
+    public int price;
     public String username;
 
 
 
-    public Cartinfo(String timestamp,String CartID,String isbn,int number,String author,Double price,String name,String username)
+    public Cartinfo(String timestamp,String CartID,String isbn,int number,String author,int price,String name,String username)
     {
         this.timestamp=timestamp;
         this.CartID=CartID;
