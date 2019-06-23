@@ -33,4 +33,19 @@ public class ChangeBookServiceimpl implements ChangeBookService {
         }
 
     }
+
+    @Override
+    public boolean changePrice(String bookID, String newbookprice) {
+        Booklist oldBook= BooklistDao.findOne(Integer.parseInt(bookID));
+        if(oldBook==null)
+        {
+            return false;
+        }
+        else
+        {
+            oldBook.setPrice(Integer.parseInt(newbookprice));
+            BooklistDao.save(oldBook);
+            return true;
+        }
+    }
 }

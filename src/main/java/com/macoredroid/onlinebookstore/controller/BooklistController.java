@@ -68,6 +68,12 @@ public class BooklistController {
     {
         return ChangeBookService.changeName(bookID, newbookname);
     }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/change/bookID/{bookID}/newbookprice/{newbookprice}")
+    public boolean changePrice(@PathVariable("bookID") String bookID,@PathVariable("newbookprice") String newbookprcie)
+    {
+        return ChangeBookService.changePrice(bookID, newbookprcie);
+    }
 
 
 
