@@ -20,6 +20,11 @@ public class UserDaoimpl implements UserDao {
     }
 
     @Override
+    public User findById(int id) {
+        return userRepository.findById(id).get();
+    }
+
+    @Override
     public void save(String username, String password, String email, int star) {
         User temp= new User(username,password,email,star);
         userRepository.save(temp);

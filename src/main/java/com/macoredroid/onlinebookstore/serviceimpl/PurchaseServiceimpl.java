@@ -42,11 +42,8 @@ public class PurchaseServiceimpl implements PurchaseService {
             }
             else
             {
-                Order temporder=new Order(tempbook.getIsbn(),time,tempcart.getNumber(), tempuser);
+                Order temporder=new Order(tempbook.getIsbn(),time,tempcart.getNumber(), tempuser.getUserID(),tempbook.getName(),tempbook.getAuthor(),tempbook.getPrice(),tempuser.getUsername());
                 orderDao.save(temporder);
-                List<Order> tempOrderlist=tempuser.getOrders();
-                tempOrderlist.add(temporder);
-                tempuser.setOrders(tempOrderlist);
                 List<Cart> tempCartlist=tempuser.getCarts();
                 tempCartlist.remove(tempcart);
                 tempuser.setCarts(tempCartlist);
@@ -55,6 +52,8 @@ public class PurchaseServiceimpl implements PurchaseService {
                 tempCartlistan.remove(tempcart);
                 tempbook.setCarts(tempCartlistan);
                 tempbook.setStock(tempStocknum-tempOrdernum);
+                int sales=tempbook.getSales();
+                tempbook.setSales(sales+tempOrdernum);
                 booklistDao.save(tempbook);
                 cartDao.remove(CartID);
                 return true;

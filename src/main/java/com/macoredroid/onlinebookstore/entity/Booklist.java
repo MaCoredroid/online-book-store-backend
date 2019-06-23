@@ -19,9 +19,10 @@ public class Booklist implements Serializable {
     private int booklistID;
     private String name;
     private String author;
-    private Double price;
+    private int price;
     private String isbn;
     private int stock;
+    private int sales;
     private List<Cart> carts=new ArrayList();
     private static final long serialVersionUID = 4L;
     @Id
@@ -53,11 +54,11 @@ public class Booklist implements Serializable {
 
     @Basic
     @Column(name = "price")
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price =price;
     }
 
@@ -76,7 +77,15 @@ public class Booklist implements Serializable {
     public int getStock() {
         return stock;
     }
+    public void setStock(int stock) {
+        this.stock =stock;
+    }
 
+
+    @Basic
+    @Column(name="sales")
+    public int getSales() {return sales;}
+    public void setSales(int sales) {this.sales = sales;}
 
     @OneToMany(targetEntity =Cart.class, mappedBy = "book",cascade = CascadeType.ALL)
     public List<Cart> getCarts()
@@ -89,9 +98,7 @@ public class Booklist implements Serializable {
        this.carts=carts;
     }
 
-    public void setStock(int stock) {
-        this.stock =stock;
-    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -116,10 +123,11 @@ public class Booklist implements Serializable {
     public int hashCode() {
         int result = booklistID;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
         result = 31 * result + (carts != null ? carts.hashCode() : 0);
         result = 31 * result + stock;
+        result = 31 * result + price;
+        result = 31 * result + sales;
         return result;
     }
 

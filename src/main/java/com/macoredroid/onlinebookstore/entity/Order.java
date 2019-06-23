@@ -3,8 +3,6 @@ package com.macoredroid.onlinebookstore.entity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,7 +18,11 @@ public class Order implements Serializable {
     private String isbn;
     private String time;
     private int number;
-    private User owner;
+    private int userid;
+    private String username;
+    private String name;
+    private String author;
+    private int price;
     private static final long serialVersionUID = 4L;
 
 
@@ -34,19 +36,24 @@ public class Order implements Serializable {
 
 
     @Basic
-    @ManyToOne(fetch=FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "username",referencedColumnName="username")
-    public User getOwner() {
+    @Column(name = "userid")
+    public int getUserid() { return userid; }
+    public void setUserid(int id) { this.userid=id; }
 
-        return owner;
-    }
+    @Basic
+    @Column(name="name")
+    public String getName(){return name;}
+    public void setName(String name) {this.name = name;}
 
-    public void setOwner(User owner) {
+    @Basic
+    @Column(name="author")
+    public String getAuthor() {return author;}
+    public void setAuthor(String author) {this.author = author;}
 
-        this.owner = owner;
-    }
-
+    @Basic
+    @Column(name = "price")
+    public int getPrice() {return price;}
+    public void setPrice(int price) {this.price=price;}
 
 
     @Basic
@@ -54,7 +61,6 @@ public class Order implements Serializable {
     public String getTime() {
         return time;
     }
-
     public void setTime(String time) {
         this.time = time;
     }
@@ -66,20 +72,24 @@ public class Order implements Serializable {
     public String getIsbn() {
         return isbn;
     }
-
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+    @Basic
+    @Column(name= "username")
+    public String getUsername() {return username;}
+    public void setUsername(String username) {this.username=username;}
 
     @Basic
     @Column(name = "number")
     public int getNumber() {
         return number;
     }
-
     public void setNumber(int number) {
         this.number =number;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -88,10 +98,14 @@ public class Order implements Serializable {
         Order that = (Order) o;
 
         if (orderid != that.orderid) return false;
-        if (!Objects.equals(owner, that.owner)) return false;
+        if (!Objects.equals(userid, that.userid)) return false;
         if (!Objects.equals(number, that.number)) return false;
         if (!Objects.equals(isbn, that.isbn)) return false;
         if (!Objects.equals(time, that.time)) return false;
+        if (!Objects.equals(name, that.name)) return false;
+        if (!Objects.equals(author, that.author)) return false;
+        if (!Objects.equals(price, that.price)) return false;
+        if (!Objects.equals(username, that.username)) return false;
 
 
 
@@ -101,10 +115,14 @@ public class Order implements Serializable {
     @Override
     public int hashCode() {
         int result = orderid;
-        result = 31 * result + (owner != null ? owner.hashCode() : 0);
         result = 31 * result + (time != null ? time.hashCode() : 0);
         result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (author != null ? author.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + number;
+        result = 31 * result + userid;
+        result = 31 * result + price;
         return result;
     }
 
@@ -113,12 +131,16 @@ public class Order implements Serializable {
 
     }
 
-    public Order(String isbn, String time, int number, User owner)
+    public Order(String isbn, String time, int number, int id, String name, String author, int price,String username)
     {
         this.isbn=isbn;
         this.time=time;
         this.number=number;
-        this.owner=owner;
+        this.userid=id;
+        this.name=name;
+        this.author=author;
+        this.price=price;
+        this.username=username;
     }
 
 

@@ -10,8 +10,6 @@ import com.macoredroid.onlinebookstore.service.DirectlyOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class DirectlyOrderServiceimpl implements DirectlyOrderService {
     @Autowired
@@ -41,14 +39,12 @@ public class DirectlyOrderServiceimpl implements DirectlyOrderService {
         else
         {
             tempBook.setStock(tempStocknum-tempOrdernum);
-            Order temporder=new Order(isbn,time,tempOrdernum,tempUser);
-
-            List<Order> tempOrderList=tempUser.getOrders();
-            tempOrderList.add(temporder);
-            tempUser.setOrders(tempOrderList);
-            orderDao.save(temporder);
+            int sales=tempBook.getSales();
+            sales+=tempOrdernum;
+            tempBook.setSales(sales);
             booklistDao.save(tempBook);
-            userDao.save(tempUser);
+            Order temporder=new Order(isbn,time,tempOrdernum,tempUser.getUserID(),tempBook.getName(),tempBook.getAuthor(),tempBook.getPrice(),username);
+            orderDao.save(temporder);
             return true;
         }
 

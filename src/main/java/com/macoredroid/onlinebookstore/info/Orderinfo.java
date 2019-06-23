@@ -2,16 +2,17 @@ package com.macoredroid.onlinebookstore.info;
 
 public class Orderinfo {
     public String timestamp;
-    public String OrderID;
+    public int OrderID;
     public String isbn;
     public int    number;
     public String name;
     public String author;
-    public Double price;
+    public int price;
+    public int userid;
     public String username;
 
 
-     public Orderinfo(String timestamp,String OrderID,String isbn,int number,String author,Double price,String name,String username)
+     public Orderinfo(String timestamp,int OrderID,String isbn,int number,String name, String author,int price,String username,int userid)
     {
         this.timestamp=timestamp;
         this.OrderID=OrderID;
@@ -21,5 +22,6 @@ public class Orderinfo {
         this.name=name;
         this.price=price;
         this.username=username;
+        this.userid=userid;
     }
 }

@@ -24,12 +24,6 @@ public class OrderDaoimpl implements OrderDao {
     }
 
     @Override
-    public void remove(Integer id)
-    {
-        OrderRepository.deleteById(id);
-    }
-
-    @Override
     public Order findOne(Integer id)
     {
         return OrderRepository.findById(id).get();
@@ -38,6 +32,11 @@ public class OrderDaoimpl implements OrderDao {
     @Override
     public List<Order> findAll() {
         return OrderRepository.findAll();
+    }
+
+    @Override
+    public List<Order> findAllByUserid(int id) {
+        return OrderRepository.findAllByUserid(id);
     }
 
 
