@@ -54,7 +54,7 @@ public class UserController {
     @GetMapping(value="/userprofile/change/username/{username}/newusername/{newusername}")
     public boolean ChangeUsername(@PathVariable("username") String username,@PathVariable("newusername") String newusername)
     {
-        if(!LoginService.findDuplicateUsername(username))
+        if(LoginService.findDuplicateUsername(username))
         {
             if(!LoginService.findDuplicateUsername(newusername))
             {
