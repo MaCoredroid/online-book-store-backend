@@ -74,7 +74,7 @@ public class ChangeBookServiceimpl implements ChangeBookService {
         }
         else
         {
-            if (Integer.parseInt(newstock) > 0)
+            if (Integer.parseInt(newstock) >= 0)
             {
                 oldBook.setStock(Integer.parseInt(newstock));
                 BooklistDao.save(oldBook);

@@ -26,4 +26,8 @@ public class Orderinfo {
         this.userid=userid;
         this.bookid=bookid;
     }
+    public Orderinfo()
+    {
+
+    }
 }
