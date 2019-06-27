@@ -7,4 +7,6 @@ import java.util.List;
 public interface BooklistService {
     bookinfo findBookByID(Integer id);
     List<bookinfo> findAll();
+    byte[] findCoverByID(String id);
+    boolean setCover(String id, byte[] cover);
 }
