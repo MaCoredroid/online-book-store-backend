@@ -1,5 +1,6 @@
 package com.macoredroid.onlinebookstore.controller;
 
+import com.macoredroid.onlinebookstore.info.Admininfo;
 import com.macoredroid.onlinebookstore.info.Userinfo;
 import com.macoredroid.onlinebookstore.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +48,33 @@ public class UserController {
         }
     }
     @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value ="/registeradmin/username/{username}/password/{password}/email/{email}")
+    public Boolean RegisterAdmin(@PathVariable("username") String username, @PathVariable("password") String password,@PathVariable("email") String email)
+    {
+        if(!LoginService.findDuplicateUsername(username))
+        {
+            return RegisterService.AdminRegister(username,password,email);
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/userprofile/username/{username}")
     public Userinfo GetUserProfile(@PathVariable("username") String username)
     {
         return GetUserProfileService.GetUserProfile(username);
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/adminprofile/username/{username}")
+    public Admininfo GetAdminProfile(@PathVariable("username") String username)
+    {
+        return GetUserProfileService.GetAdminProfile(username);
+    }
+
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/userprofile/change/username/{username}/newusername/{newusername}")
     public boolean ChangeUsername(@PathVariable("username") String username,@PathVariable("newusername") String newusername)
