@@ -17,10 +17,8 @@ public class OrderController {
     private GetOrderService GetOrderService;
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/order/getorder/{username}")
-    public List<Orderinfo> findUser(@PathVariable("username") String username)
-    {
-        return  GetOrderService.findAllByUsername(username);
-    }
+    public List<Orderinfo> findUser(@PathVariable("username") String username) { return  GetOrderService.findAllByUsername(username); }
+
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/order/id/{id}")
     public Orderinfo findByID(@PathVariable("id") String id)
