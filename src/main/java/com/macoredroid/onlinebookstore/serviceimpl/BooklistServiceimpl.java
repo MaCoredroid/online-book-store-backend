@@ -3,6 +3,7 @@ package com.macoredroid.onlinebookstore.serviceimpl;
 import com.macoredroid.onlinebookstore.dao.BooklistDao;
 import com.macoredroid.onlinebookstore.dao.OrderDao;
 import com.macoredroid.onlinebookstore.entity.Booklist;
+import com.macoredroid.onlinebookstore.entity.Cover;
 import com.macoredroid.onlinebookstore.entity.Order;
 import com.macoredroid.onlinebookstore.info.bookinfo;
 import com.macoredroid.onlinebookstore.service.BooklistService;
@@ -47,5 +48,34 @@ public class BooklistServiceimpl implements BooklistService {
             resultlist.add(tempbookinfo);
         }
         return resultlist;
+    }
+
+    @Override
+    public byte[] findCoverByID(String id) {
+        Booklist tempbook = BooklistDao.findOne(Integer.parseInt(id));
+        if(tempbook==null)
+        {
+            return null;
+        }
+        else
+        {
+            return BooklistDao.findCoverBybookid(id);
+        }
+    }
+
+    @Override
+    public boolean setCover(String id, byte[] cover)
+    {
+        Booklist tempbook = BooklistDao.findOne(Integer.parseInt(id));
+        if(tempbook==null)
+        {
+            return false;
+        }
+        else
+        {
+            Cover temp=new Cover(id,cover);
+            BooklistDao.saveCover(temp);
+            return true;
+        }
     }
 }
