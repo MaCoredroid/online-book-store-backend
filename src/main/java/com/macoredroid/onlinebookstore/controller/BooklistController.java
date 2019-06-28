@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -37,15 +36,25 @@ public class BooklistController {
 
     }
     @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/userbooklist")
+    public List<bookinfo> UserfindAll()
+    {
+        return BooklistService.UserfindAll();
+
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/bookidlist")
     public List<String> findAllbookid()
     {
-        List<bookinfo> temp=BooklistService.findAll();
-        List<String> bookidlist=new ArrayList<>();
-        for (int i = 0; i < temp.size(); i++) {
-            bookidlist.add(Integer.toString(temp.get(i).booklistID));
-        }
-        return bookidlist;
+        return BooklistService.findAllbookid();
+
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/userbookidlist")
+    public List<String> userfindAllbookid()
+    {
+        return BooklistService.userfindAllbookid();
 
     }
     @CrossOrigin(origins = "http://localhost:3000")
@@ -85,6 +94,19 @@ public class BooklistController {
     {
         return ChangeBookService.changeIsbn(bookID, newisbn);
     }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/blockbook/bookID/{bookID}")
+    public boolean BlockBook(@PathVariable("bookID") String bookID)
+    {
+        return BooklistService.block(bookID);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/unblockbook/bookID/{bookID}")
+    public boolean UnblockBook(@PathVariable("bookID") String bookID)
+    {
+        return BooklistService.unblock(bookID);
+    }
+
 
 
 }

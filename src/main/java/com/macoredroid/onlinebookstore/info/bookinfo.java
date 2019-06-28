@@ -8,7 +8,8 @@ public class bookinfo {
     public String isbn;
     public int stock;
     public int sales;
-    public bookinfo(int booklistID,String name,String author,int price,String isbn,int stock,int sales)
+    public boolean status;
+    public bookinfo(int booklistID,String name,String author,int price,String isbn,int stock,int sales,boolean status)
     {
         this.booklistID=booklistID;
         this.name=name;
@@ -17,6 +18,11 @@ public class bookinfo {
         this.isbn=isbn;
         this.stock=stock;
         this.sales=sales;
+        this.status=status;
+    }
+    public bookinfo()
+    {
+
     }
 
 }

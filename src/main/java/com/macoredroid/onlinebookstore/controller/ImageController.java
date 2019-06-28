@@ -19,6 +19,10 @@ public class ImageController {
     @GetMapping(value ="/image/{bookid}")
     public @ResponseBody byte[] getImage(@PathVariable("bookid") String bookid) throws IOException
     {
+        if(bookid.equals("undefined"))
+        {
+            return null;
+        }
         return BooklistService.findCoverByID(bookid);
     }
 

@@ -33,6 +33,14 @@ public class PurchaseServiceimpl implements PurchaseService {
         else
         {
             Booklist tempbook = tempcart.getBook();
+            if(tempbook==null)
+            {
+                return false;
+            }
+            if(tempbook.getStatus()==0)
+            {
+                return false;
+            }
             User tempuser = tempcart.getUser();
             int tempOrdernum = tempcart.getNumber();
             int tempStocknum = tempbook.getStock();

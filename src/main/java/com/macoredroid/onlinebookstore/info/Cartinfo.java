@@ -10,10 +10,11 @@ public class Cartinfo {
     public int price;
     public int bookid;
     public String username;
+    public boolean status;
 
 
 
-    public Cartinfo(String timestamp,String CartID,String isbn,int number,String author,int price,String name,String username,int bookid)
+    public Cartinfo(String timestamp,String CartID,String isbn,int number,String author,int price,String name,String username,int bookid, boolean status)
     {
         this.timestamp=timestamp;
         this.CartID=CartID;
@@ -24,5 +25,6 @@ public class Cartinfo {
         this.price=price;
         this.username=username;
         this.bookid=bookid;
+        this.status=status;
     }
 }

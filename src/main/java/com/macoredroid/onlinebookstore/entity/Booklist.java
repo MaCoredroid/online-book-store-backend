@@ -24,6 +24,7 @@ public class Booklist implements Serializable {
     private int stock;
     private int sales;
     private List<Cart> carts=new ArrayList();
+    private int status;
     private static final long serialVersionUID = 4L;
     @Id
     @Column(name = "booklistID")
@@ -87,6 +88,11 @@ public class Booklist implements Serializable {
     public int getSales() {return sales;}
     public void setSales(int sales) {this.sales = sales;}
 
+    @Basic
+    @Column(name="status")
+    public int getStatus() {return status;}
+    public void setStatus(int status) {this.status=status;}
+
     @OneToMany(targetEntity =Cart.class, mappedBy = "book",cascade = CascadeType.ALL)
     public List<Cart> getCarts()
     {
@@ -112,7 +118,7 @@ public class Booklist implements Serializable {
         if (!Objects.equals(isbn, that.isbn)) return false;
         if (!Objects.equals(stock, that.stock)) return false;
         if (!Objects.equals(carts, that.carts)) return false;
-
+        if (!Objects.equals(status, that.status)) return false;
 
 
 
@@ -128,6 +134,7 @@ public class Booklist implements Serializable {
         result = 31 * result + stock;
         result = 31 * result + price;
         result = 31 * result + sales;
+        result = 31 * result + status;
         return result;
     }
 
