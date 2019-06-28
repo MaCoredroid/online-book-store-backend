@@ -26,6 +26,10 @@ public class DirectlyOrderServiceimpl implements DirectlyOrderService {
         {
             return false;
         }
+        if(tempBook.getStatus()==0)
+        {
+            return false;
+        }
         if(tempUser==null)
         {
             return false;

@@ -31,6 +31,10 @@ public class AddtoCartServiceimpl implements AddtoCartService {
         {
             return false;
         }
+        if(tempBook.getStatus()==0)
+        {
+            return false;
+        }
         Cart tempcart=new Cart(time,number,tempBook,tempUser);
 
         List<Cart> cartlist=tempBook.getCarts();
