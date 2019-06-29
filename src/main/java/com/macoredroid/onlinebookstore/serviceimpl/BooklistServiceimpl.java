@@ -145,5 +145,12 @@ public class BooklistServiceimpl implements BooklistService {
         }
         return bookidlist;
     }
+
+    @Override
+    public boolean NewBook(String name, String author, int price, String isbn, int stock) {
+        Booklist newbook=new Booklist(name,author,price,isbn,stock);
+        BooklistDao.save(newbook);
+        return true;
+    }
 }
 

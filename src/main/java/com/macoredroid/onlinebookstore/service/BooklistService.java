@@ -14,5 +14,6 @@ public interface BooklistService {
     boolean unblock(String id);
     List<String> findAllbookid();
     List<String> userfindAllbookid();
+    boolean NewBook(String name, String author,int price,String isbn, int stock);
 
 }

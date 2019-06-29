@@ -25,14 +25,15 @@ public class GetCartServiceimpl implements GetCartService {
         List<Cart> templist= UserDao.findOne(username).getCarts();
         for(Cart tempcart:templist) {
             Booklist temp=tempcart.getBook();
-            if(temp==null||temp.getStatus()==0)
+            if (temp.getStatus() == 0)
             {
-                resultlist.add(new Cartinfo(tempcart.getTime(),Integer.toString(tempcart.getCartid()),temp.getIsbn(), tempcart.getNumber(),temp.getAuthor(),temp.getPrice(), temp.getName(),username,temp.getBooklistID(),false));
+                resultlist.add(new Cartinfo(tempcart.getTime(), Integer.toString(tempcart.getCartid()), temp.getIsbn(), tempcart.getNumber(), temp.getAuthor(), temp.getPrice(), temp.getName(), username, temp.getBooklistID(), false));
             }
             else
             {
                 resultlist.add(new Cartinfo(tempcart.getTime(), Integer.toString(tempcart.getCartid()), temp.getIsbn(), tempcart.getNumber(), temp.getAuthor(), temp.getPrice(), temp.getName(), username, temp.getBooklistID(), true));
             }
+
         }
 
         return resultlist;
@@ -44,7 +45,14 @@ public class GetCartServiceimpl implements GetCartService {
         List<Cart> templist=CartDao.findAll();
         for(Cart tempcart:templist) {
             Booklist temp=tempcart.getBook();
-            resultlist.add(new Cartinfo(tempcart.getTime(),Integer.toString(tempcart.getCartid()),temp.getIsbn(), tempcart.getNumber(),temp.getAuthor(),temp.getPrice(), temp.getName(),tempcart.getUser().getUsername(),temp.getBooklistID(),true));
+            if (temp.getStatus() == 0)
+            {
+                resultlist.add(new Cartinfo(tempcart.getTime(), Integer.toString(tempcart.getCartid()), temp.getIsbn(), tempcart.getNumber(), temp.getAuthor(), temp.getPrice(), temp.getName(), tempcart.getUser().getUsername(), temp.getBooklistID(), false));
+            }
+            else
+            {
+                resultlist.add(new Cartinfo(tempcart.getTime(), Integer.toString(tempcart.getCartid()), temp.getIsbn(), tempcart.getNumber(), temp.getAuthor(), temp.getPrice(), temp.getName(), tempcart.getUser().getUsername(), temp.getBooklistID(), true));
+            }
         }
         return resultlist;
 

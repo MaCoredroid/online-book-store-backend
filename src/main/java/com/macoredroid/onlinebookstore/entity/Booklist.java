@@ -104,7 +104,21 @@ public class Booklist implements Serializable {
        this.carts=carts;
     }
 
+    public Booklist()
+    {
 
+    }
+
+    public Booklist(String name, String author,int price,String isbn, int stock)
+    {
+        this.name=name;
+        this.author=author;
+        this.price=price;
+        this.isbn=isbn;
+        this.stock=stock;
+        this.sales=0;
+        this.status=1;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

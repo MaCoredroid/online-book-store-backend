@@ -106,6 +106,12 @@ public class BooklistController {
     {
         return BooklistService.unblock(bookID);
     }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/addbook/name/{name}/author/{author}/price/{price}/isbn/{isbn}/stock/{stock}")
+    public boolean AddBook(@PathVariable("name") String name,@PathVariable("author") String author,@PathVariable("price") String price,@PathVariable("isbn") String isbn,@PathVariable("stock") String stock)
+    {
+        return BooklistService.NewBook(name,author,Integer.parseInt(price),isbn,Integer.parseInt(stock));
+    }
 
 
 
