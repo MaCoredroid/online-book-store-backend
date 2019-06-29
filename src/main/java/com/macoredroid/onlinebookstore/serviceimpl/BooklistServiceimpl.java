@@ -152,5 +152,19 @@ public class BooklistServiceimpl implements BooklistService {
         BooklistDao.save(newbook);
         return true;
     }
+
+    @Override
+    public boolean DeleteBook(String id) {
+        Booklist tempbook = BooklistDao.findOne(Integer.parseInt(id));
+        if (tempbook == null) {
+            return false;
+        }
+        else
+        {
+            BooklistDao.deleteOne(Integer.parseInt(id));
+            BooklistDao.deleteCover(id);
+            return true;
+        }
+    }
 }
 

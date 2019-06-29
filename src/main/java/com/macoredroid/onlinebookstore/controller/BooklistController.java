@@ -112,6 +112,12 @@ public class BooklistController {
     {
         return BooklistService.NewBook(name,author,Integer.parseInt(price),isbn,Integer.parseInt(stock));
     }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/admin/deletebook/bookid/{bookid}")
+    public boolean DeleteBook(@PathVariable("bookid") String bookid)
+    {
+        return BooklistService.DeleteBook(bookid);
+    }
 
 
 

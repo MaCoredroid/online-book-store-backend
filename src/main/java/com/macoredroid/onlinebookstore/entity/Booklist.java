@@ -117,7 +117,7 @@ public class Booklist implements Serializable {
         this.isbn=isbn;
         this.stock=stock;
         this.sales=0;
-        this.status=1;
+        this.status=0;
     }
     @Override
     public boolean equals(Object o) {
