@@ -60,4 +60,14 @@ public class BooklistDaoimpl implements BooklistDao {
     {
         CoverRepository.save(cover);
     }
+
+    @Override
+    public void deleteOne(Integer id) {
+        BooklistRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteCover(String id) {
+        CoverRepository.deleteById(id);
+    }
 }

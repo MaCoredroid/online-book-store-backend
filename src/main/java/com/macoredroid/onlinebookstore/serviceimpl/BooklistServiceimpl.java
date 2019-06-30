@@ -145,5 +145,36 @@ public class BooklistServiceimpl implements BooklistService {
         }
         return bookidlist;
     }
+
+    @Override
+    public String NewBook(String name, String author, int price, String isbn, int stock) {
+        Booklist temp= BooklistDao.findByIsbn(isbn);
+        if(temp!=null)
+        {
+            return "false";
+        }
+        Booklist temp1=BooklistDao.findByName(name);
+        if(temp1!=null)
+        {
+            return "false";
+        }
+        Booklist newbook=new Booklist(name,author,price,isbn,stock);
+        BooklistDao.save(newbook);
+        return Integer.toString(newbook.getBooklistID());
+    }
+
+    @Override
+    public boolean DeleteBook(String id) {
+        Booklist tempbook = BooklistDao.findOne(Integer.parseInt(id));
+        if (tempbook == null) {
+            return false;
+        }
+        else
+        {
+            BooklistDao.deleteOne(Integer.parseInt(id));
+            BooklistDao.deleteCover(id);
+            return true;
+        }
+    }
 }
 

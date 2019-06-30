@@ -13,4 +13,6 @@ public interface BooklistDao {
     byte[] findCoverBybookid(String bookid);
     void save(Booklist booklist);
     void saveCover(Cover cover);
+    void deleteOne(Integer id);
+    void deleteCover(String id);
 }
