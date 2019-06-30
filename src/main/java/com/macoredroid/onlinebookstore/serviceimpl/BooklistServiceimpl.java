@@ -147,10 +147,20 @@ public class BooklistServiceimpl implements BooklistService {
     }
 
     @Override
-    public boolean NewBook(String name, String author, int price, String isbn, int stock) {
+    public String NewBook(String name, String author, int price, String isbn, int stock) {
+        Booklist temp= BooklistDao.findByIsbn(isbn);
+        if(temp!=null)
+        {
+            return "false";
+        }
+        Booklist temp1=BooklistDao.findByName(name);
+        if(temp1!=null)
+        {
+            return "false";
+        }
         Booklist newbook=new Booklist(name,author,price,isbn,stock);
         BooklistDao.save(newbook);
-        return true;
+        return Integer.toString(newbook.getBooklistID());
     }
 
     @Override
