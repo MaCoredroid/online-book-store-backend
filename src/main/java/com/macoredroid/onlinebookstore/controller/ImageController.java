@@ -30,7 +30,7 @@ public class ImageController {
     @RequestMapping(value ="/setimage/{bookid}" ,method = RequestMethod.POST)
     public boolean  handleFileUpload(@PathVariable("bookid") String id,@RequestParam("file") MultipartFile file) throws IOException {
         String extension = FilenameUtils.getExtension(file.getOriginalFilename());
-        if(!extension.equals("png"))
+        if(!extension.equals("png")&&!extension.equals("jpg"))
         {
             return false;
         }
