@@ -78,9 +78,12 @@ public class BooklistServiceimpl implements BooklistService {
     @Override
     public boolean setCover(String id, byte[] cover) {
         Booklist tempbook = BooklistDao.findOne(Integer.parseInt(id));
-        if (tempbook == null) {
+        if (tempbook == null)
+        {
             return false;
-        } else {
+        }
+        else
+        {
             Cover temp = new Cover(id, cover);
             BooklistDao.saveCover(temp);
             return true;
