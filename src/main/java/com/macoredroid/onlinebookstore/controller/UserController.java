@@ -5,6 +5,7 @@ import com.macoredroid.onlinebookstore.info.Userinfo;
 import com.macoredroid.onlinebookstore.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
 
@@ -12,35 +13,26 @@ import java.util.List;
 @RestController
 public class UserController {
     @Autowired
-    private LoginService LoginService;
-    @Autowired
-    private RegisterService RegisterService;
-    @Autowired
-    private GetUserProfileService GetUserProfileService;
-    @Autowired
-    private ChangeUserService ChangeUserService;
-    @Autowired
-    private SeeAllUsers SeeAllUsers;
-    @Autowired
-    private UnsubscribeService UnsubscribeService;
-    @Autowired
-    private BlockUserService BlockUserService;
+    WebApplicationContext applicationContext;
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/login/{username}/password/{password}")
     @ResponseBody
     public String findUser(@PathVariable("username") String username, @PathVariable("password") String password)
     {
-        return LoginService.Login(username, password);
+        LoginService loginService=applicationContext.getBean(LoginService.class);
+        return loginService.Login(username, password);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/register/username/{username}/password/{password}/email/{email}/star/{star}")
     public Boolean RegisterUser(@PathVariable("username") String username, @PathVariable("password") String password,@PathVariable("email") String email,@PathVariable("star") String star)
     {
-        if(!LoginService.findDuplicateUsername(username))
+        LoginService loginService=applicationContext.getBean(LoginService.class);
+        RegisterService registerService=applicationContext.getBean(RegisterService.class);
+        if(!loginService.findDuplicateUsername(username))
         {
-            return (RegisterService.Register(username, password, email, Integer.parseInt(star)));
+            return (registerService.Register(username, password, email, Integer.parseInt(star)));
         }
         else
         {
@@ -51,9 +43,11 @@ public class UserController {
     @GetMapping(value ="/registeradmin/username/{username}/password/{password}/email/{email}")
     public Boolean RegisterAdmin(@PathVariable("username") String username, @PathVariable("password") String password,@PathVariable("email") String email)
     {
-        if(!LoginService.findDuplicateUsername(username))
+        LoginService loginService=applicationContext.getBean(LoginService.class);
+        RegisterService registerService=applicationContext.getBean(RegisterService.class);
+        if(!loginService.findDuplicateUsername(username))
         {
-            return RegisterService.AdminRegister(username,password,email);
+            return registerService.AdminRegister(username,password,email);
         }
         else
         {
@@ -65,24 +59,27 @@ public class UserController {
     @GetMapping(value="/userprofile/username/{username}")
     public Userinfo GetUserProfile(@PathVariable("username") String username)
     {
-        return GetUserProfileService.GetUserProfile(username);
+        GetUserProfileService getUserProfileService=applicationContext.getBean(GetUserProfileService.class);
+        return getUserProfileService.GetUserProfile(username);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/adminprofile/username/{username}")
     public Admininfo GetAdminProfile(@PathVariable("username") String username)
     {
-        return GetUserProfileService.GetAdminProfile(username);
+        GetUserProfileService getUserProfileService=applicationContext.getBean(GetUserProfileService.class);
+        return getUserProfileService.GetAdminProfile(username);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/userprofile/change/username/{username}/newusername/{newusername}")
     public boolean ChangeUsername(@PathVariable("username") String username,@PathVariable("newusername") String newusername)
     {
-
-        if(!LoginService.findDuplicateUsername(newusername))
+        LoginService loginService=applicationContext.getBean(LoginService.class);
+        ChangeUserService changeUserService=applicationContext.getBean(ChangeUserService.class);
+        if(!loginService.findDuplicateUsername(newusername))
         {
-            return ChangeUserService.ChangeUsername(username, newusername);
+            return changeUserService.ChangeUsername(username, newusername);
         }
         else
         {
@@ -94,10 +91,11 @@ public class UserController {
     @GetMapping(value="/adminprofile/change/username/{username}/newusername/{newusername}")
     public boolean ChangeAdminUsername(@PathVariable("username") String username,@PathVariable("newusername") String newusername)
     {
-
-        if(!LoginService.findDuplicateUsername(newusername))
+        LoginService loginService=applicationContext.getBean(LoginService.class);
+        ChangeUserService changeUserService=applicationContext.getBean(ChangeUserService.class);
+        if(!loginService.findDuplicateUsername(newusername))
         {
-            return ChangeUserService.ChangeAdminUsername(username, newusername);
+            return changeUserService.ChangeAdminUsername(username, newusername);
         }
         else
         {
@@ -109,49 +107,56 @@ public class UserController {
     @GetMapping(value="/userprofile/change/username/{username}/newemail/{newemail}")
     public boolean ChangeUserEmail(@PathVariable("username") String username,@PathVariable("newemail") String newemail)
     {
-        return ChangeUserService.ChangeEmail(username,newemail);
+        ChangeUserService changeUserService=applicationContext.getBean(ChangeUserService.class);
+        return changeUserService.ChangeEmail(username,newemail);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/userprofile/change/username/{username}/newpassword/{newpassword}")
     public boolean ChangeUserPassword(@PathVariable("username") String username,@PathVariable("newpassword") String newpassword)
     {
-        return ChangeUserService.ChangePassword(username, newpassword);
+        ChangeUserService changeUserService=applicationContext.getBean(ChangeUserService.class);
+        return changeUserService.ChangePassword(username, newpassword);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/adminprofile/change/username/{username}/newpassword/{newpassword}")
     public boolean ChangeAdminPassword(@PathVariable("username") String username,@PathVariable("newpassword") String newpassword)
     {
-        return ChangeUserService.ChangeAdminPassword(username, newpassword);
+        ChangeUserService changeUserService=applicationContext.getBean(ChangeUserService.class);
+        return changeUserService.ChangeAdminPassword(username, newpassword);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/admin/seeAllUser")
     public List<Userinfo> SeeAllUsers()
     {
-        return SeeAllUsers.SeeAllUsers();
+        SeeAllUsers seeAllUsers=applicationContext.getBean(SeeAllUsers.class);
+        return seeAllUsers.SeeAllUsers();
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/userprofile/unsubscribe/username/{username}")
     public boolean Unsubscribe(@PathVariable("username") String username)
     {
-        return UnsubscribeService.Unsubscribe(username);
+        UnsubscribeService unsubscribeService=applicationContext.getBean(UnsubscribeService.class);
+        return unsubscribeService.Unsubscribe(username);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/admin/block/{username}")
     public boolean BlockUser(@PathVariable("username") String username)
     {
-        return BlockUserService.BlockUserService(username);
+        BlockUserService blockUserService=applicationContext.getBean(BlockUserService.class);;
+        return blockUserService.BlockUserService(username);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/admin/unblock/{username}")
     public boolean UnBlockUser(@PathVariable("username") String username)
     {
-        return BlockUserService.UnBlockUserService(username);
+        BlockUserService blockUserService=applicationContext.getBean(BlockUserService.class);;
+        return blockUserService.UnBlockUserService(username);
     }
 
 

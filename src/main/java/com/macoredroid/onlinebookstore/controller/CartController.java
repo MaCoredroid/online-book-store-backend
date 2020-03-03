@@ -16,7 +16,7 @@ import java.util.List;
 public class CartController {
     @Autowired
     WebApplicationContext applicationContext;
-    
+
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/cart/username/{username}")
     public List<Cartinfo> findCartsByUsername(@PathVariable("username") String username)
