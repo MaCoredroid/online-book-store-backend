@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 @RestController
@@ -17,32 +18,28 @@ public class BooklistController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/Booklist/{id}")
-    public bookinfo findbyId(@PathVariable("id") String id)
-    {
+    public bookinfo findbyId(@PathVariable("id") String id) throws RemoteException {
         BooklistService booklistService=applicationContext.getBean(BooklistService.class);
         return booklistService.findBookByID(Integer.parseInt(id));
 
     }
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/booklist")
-    public List<bookinfo> findAll()
-    {
+    public List<bookinfo> findAll() throws RemoteException {
         BooklistService booklistService=applicationContext.getBean(BooklistService.class);
         return booklistService.findAll();
 
     }
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/userbooklist")
-    public List<bookinfo> UserfindAll()
-    {
+    public List<bookinfo> UserfindAll() throws RemoteException {
         BooklistService booklistService=applicationContext.getBean(BooklistService.class);
         return booklistService.UserfindAll();
 
     }
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/bookidlist")
-    public List<String> findAllbookid()
-    {
+    public List<String> findAllbookid() throws RemoteException {
         BooklistService booklistService=applicationContext.getBean(BooklistService.class);
         return booklistService.findAllbookid();
 
@@ -50,8 +47,7 @@ public class BooklistController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/userbookidlist")
-    public List<String> userfindAllbookid()
-    {
+    public List<String> userfindAllbookid() throws RemoteException {
         BooklistService booklistService=applicationContext.getBean(BooklistService.class);
         return booklistService.userfindAllbookid();
 
@@ -101,30 +97,26 @@ public class BooklistController {
     }
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/admin/blockbook/bookID/{bookID}")
-    public boolean BlockBook(@PathVariable("bookID") String bookID)
-    {
+    public boolean BlockBook(@PathVariable("bookID") String bookID) throws RemoteException {
         BooklistService booklistService=applicationContext.getBean(BooklistService.class);
         return booklistService.block(bookID);
     }
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/admin/unblockbook/bookID/{bookID}")
-    public boolean UnblockBook(@PathVariable("bookID") String bookID)
-    {
+    public boolean UnblockBook(@PathVariable("bookID") String bookID) throws RemoteException {
         BooklistService booklistService=applicationContext.getBean(BooklistService.class);
         return booklistService.unblock(bookID);
     }
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/admin/addbook/name/{name}/author/{author}/price/{price}/isbn/{isbn}/stock/{stock}")
     @ResponseBody
-    public String AddBook(@PathVariable("name") String name,@PathVariable("author") String author,@PathVariable("price") String price,@PathVariable("isbn") String isbn,@PathVariable("stock") String stock)
-    {
+    public String AddBook(@PathVariable("name") String name,@PathVariable("author") String author,@PathVariable("price") String price,@PathVariable("isbn") String isbn,@PathVariable("stock") String stock) throws RemoteException {
         BooklistService booklistService=applicationContext.getBean(BooklistService.class);
         return booklistService.NewBook(name,author,Integer.parseInt(price),isbn,Integer.parseInt(stock));
     }
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/admin/deletebook/bookid/{bookid}")
-    public boolean DeleteBook(@PathVariable("bookid") String bookid)
-    {
+    public boolean DeleteBook(@PathVariable("bookid") String bookid) throws RemoteException {
         BooklistService booklistService=applicationContext.getBean(BooklistService.class);
         return booklistService.DeleteBook(bookid);
     }

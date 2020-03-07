@@ -8,19 +8,35 @@ import com.macoredroid.onlinebookstore.info.bookinfo;
 import com.macoredroid.onlinebookstore.service.BooklistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.WebApplicationContext;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
-public class BooklistServiceimpl implements BooklistService {
+public class BooklistServiceimpl extends UnicastRemoteObject implements BooklistService {
     @Autowired
     private BooklistDao BooklistDao;
     @Autowired
     private OrderDao OrderDao;
 
+    @Autowired
+    WebApplicationContext applicationContext;
+
+    private Map<String, String> res;
+
+    public BooklistServiceimpl() throws RemoteException {
+        res=new HashMap<String, String>();
+        res.put("How to Catch a Leprechaun","You've been planning night and day, and finally you've created the perfect trap! Now all you need to do is wait. Is this the year you'll finally catch the leprechaun? Start a St. Patrick's Day tradition with this fun and lively children's book.");
+        res.put("American Dirt","This book is not simply the great American novel; it’s the great novel of las Americas. It’s the great world novel! This is the international story of our times. Masterful.");
+    }
+
     @Override
-    public bookinfo findBookByID(Integer id) {
+    public bookinfo findBookByID(Integer id) throws RemoteException{
         Booklist tempbook = BooklistDao.findOne(id);
         if (tempbook == null) {
             return null;
@@ -30,9 +46,15 @@ public class BooklistServiceimpl implements BooklistService {
         }
     }
 
+    @Override
+    public String rmiFindBookDescription(String name) throws RemoteException {
+        String ret= res.get(name);
+        return ret==null?"":ret;
+    }
+
 
     @Override
-    public List<bookinfo> findAll() {
+    public List<bookinfo> findAll() throws RemoteException{
 
         List<Booklist> templist = BooklistDao.findAll();
         List<bookinfo> resultlist = new ArrayList<>();
@@ -52,7 +74,7 @@ public class BooklistServiceimpl implements BooklistService {
     }
 
     @Override
-    public List<bookinfo> UserfindAll() {
+    public List<bookinfo> UserfindAll() throws RemoteException{
         List<Booklist> templist = BooklistDao.findAll();
         List<bookinfo> resultlist = new ArrayList<>();
         for (Booklist tempbook : templist) {
@@ -66,7 +88,7 @@ public class BooklistServiceimpl implements BooklistService {
     }
 
     @Override
-    public byte[] findCoverByID(String id) {
+    public byte[] findCoverByID(String id) throws RemoteException{
         Booklist tempbook = BooklistDao.findOne(Integer.parseInt(id));
         if (tempbook == null) {
             return null;
@@ -76,7 +98,7 @@ public class BooklistServiceimpl implements BooklistService {
     }
 
     @Override
-    public boolean setCover(String id, byte[] cover) {
+    public boolean setCover(String id, byte[] cover) throws RemoteException{
         Booklist tempbook = BooklistDao.findOne(Integer.parseInt(id));
         if (tempbook == null)
         {
@@ -91,7 +113,7 @@ public class BooklistServiceimpl implements BooklistService {
     }
 
     @Override
-    public boolean block(String id) {
+    public boolean block(String id) throws RemoteException {
         Booklist tempbook = BooklistDao.findOne(Integer.parseInt(id));
         if (tempbook == null) {
             return false;
@@ -109,7 +131,7 @@ public class BooklistServiceimpl implements BooklistService {
     }
 
     @Override
-    public boolean unblock(String id) {
+    public boolean unblock(String id) throws RemoteException {
         Booklist tempbook = BooklistDao.findOne(Integer.parseInt(id));
         if (tempbook == null) {
             return false;
@@ -127,7 +149,7 @@ public class BooklistServiceimpl implements BooklistService {
     }
 
     @Override
-    public List<String> findAllbookid() {
+    public List<String> findAllbookid() throws RemoteException{
         List<Booklist> temp = BooklistDao.findAll();
         List<String> bookidlist=new ArrayList<>();
         for (int i = 0; i < temp.size(); i++) {
@@ -137,7 +159,7 @@ public class BooklistServiceimpl implements BooklistService {
     }
 
     @Override
-    public List<String> userfindAllbookid() {
+    public List<String> userfindAllbookid() throws RemoteException{
         List<Booklist> temp = BooklistDao.findAll();
         List<String> bookidlist=new ArrayList<>();
         for (int i = 0; i < temp.size(); i++) {
@@ -150,7 +172,7 @@ public class BooklistServiceimpl implements BooklistService {
     }
 
     @Override
-    public String NewBook(String name, String author, int price, String isbn, int stock) {
+    public String NewBook(String name, String author, int price, String isbn, int stock) throws RemoteException{
         Booklist temp= BooklistDao.findByIsbn(isbn);
         if(temp!=null)
         {
@@ -167,7 +189,7 @@ public class BooklistServiceimpl implements BooklistService {
     }
 
     @Override
-    public boolean DeleteBook(String id) {
+    public boolean DeleteBook(String id) throws RemoteException {
         Booklist tempbook = BooklistDao.findOne(Integer.parseInt(id));
         if (tempbook == null) {
             return false;
