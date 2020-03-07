@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 
@@ -18,9 +19,11 @@ public class UserController {
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/login/{username}/password/{password}")
     @ResponseBody
-    public String findUser(@PathVariable("username") String username, @PathVariable("password") String password)
+    public String findUser(HttpServletResponse response,@PathVariable("username") String username, @PathVariable("password") String password)
     {
         LoginService loginService=applicationContext.getBean(LoginService.class);
+        System.out.println(loginService);
+        response.addHeader("Access-Control-Allow-Credentials", "true");
         return loginService.Login(username, password);
     }
 
@@ -39,6 +42,18 @@ public class UserController {
             return false;
         }
     }
+
+
+    @GetMapping(value ="/loginwithoutverify")
+    public Boolean LoginWithoutVerify(HttpServletResponse response)
+    {
+
+        LoginService loginService=applicationContext.getBean(LoginService.class);
+        System.out.println(loginService);
+        response.addHeader("Access-Control-Allow-Credentials", "true");
+        return loginService.LoginWithoutVerify();
+    }
+
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/registeradmin/username/{username}/password/{password}/email/{email}")
     public Boolean RegisterAdmin(@PathVariable("username") String username, @PathVariable("password") String password,@PathVariable("email") String email)
