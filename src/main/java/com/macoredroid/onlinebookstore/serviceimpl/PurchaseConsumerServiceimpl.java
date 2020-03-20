@@ -8,13 +8,20 @@ import com.macoredroid.onlinebookstore.entity.Booklist;
 import com.macoredroid.onlinebookstore.entity.Cart;
 import com.macoredroid.onlinebookstore.entity.Order;
 import com.macoredroid.onlinebookstore.entity.User;
-import com.macoredroid.onlinebookstore.service.PurchaseService;
+import com.macoredroid.onlinebookstore.service.PurchaseConsumerService;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
+
 @Service
-public class PurchaseServiceimpl implements PurchaseService {
+public class PurchaseConsumerServiceimpl implements PurchaseConsumerService {
     @Autowired
     private BooklistDao booklistDao;
     @Autowired
@@ -23,7 +30,7 @@ public class PurchaseServiceimpl implements PurchaseService {
     private UserDao userDao;
     @Autowired
     private OrderDao orderDao;
-    @Override
+
     public boolean Purchase(int CartID,String time) {
         Cart tempcart= cartDao.findOne(CartID);
         if(tempcart==null)

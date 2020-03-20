@@ -1,5 +1,6 @@
 package com.macoredroid.onlinebookstore.controller;
 
+import com.macoredroid.onlinebookstore.PurchaseConsumer;
 import com.macoredroid.onlinebookstore.info.Cartinfo;
 import com.macoredroid.onlinebookstore.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,8 +58,15 @@ public class CartController {
     @GetMapping(value="/cart/purchase/{id}/time/{time}")
     public boolean purchaseCart(@PathVariable("id") String id,@PathVariable("time") String time)
     {
-        PurchaseService purchaseService=applicationContext.getBean(PurchaseService.class);;
-        return purchaseService.Purchase(Integer.parseInt(id), time);
+        PurchaseProducerService purchaseProducerService =applicationContext.getBean(PurchaseProducerService.class);;
+        return purchaseProducerService.Purchase(Integer.parseInt(id), time);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/cart/innerpurchase/{id}/time/{time}")
+    public boolean innerpurchaseCart(@PathVariable("id") String id,@PathVariable("time") String time)
+    {
+        PurchaseConsumerService purchaseConsumerService =applicationContext.getBean(PurchaseConsumerService.class);;
+        return purchaseConsumerService.Purchase(Integer.parseInt(id), time);
     }
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/cart/clearall/username/{username}/username/{username}")
