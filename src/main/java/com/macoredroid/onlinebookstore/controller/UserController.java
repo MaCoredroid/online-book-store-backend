@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.http.HttpServletResponse;
+import java.rmi.RemoteException;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 @RestController
@@ -16,11 +18,23 @@ public class UserController {
     @Autowired
     WebApplicationContext applicationContext;
 
+    private AtomicInteger c = new AtomicInteger(0);
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/counter")
+    public int counter() throws RemoteException {
+
+        return c.get();
+
+    }
+
+
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value ="/login/{username}/password/{password}")
     @ResponseBody
     public String findUser(HttpServletResponse response,@PathVariable("username") String username, @PathVariable("password") String password)
     {
+        c.incrementAndGet();
         LoginService loginService=applicationContext.getBean(LoginService.class);
         System.out.println(loginService);
         response.addHeader("Access-Control-Allow-Credentials", "true");
@@ -47,7 +61,6 @@ public class UserController {
     @GetMapping(value ="/loginwithoutverify")
     public Boolean LoginWithoutVerify(HttpServletResponse response)
     {
-
         LoginService loginService=applicationContext.getBean(LoginService.class);
         System.out.println(loginService);
         response.addHeader("Access-Control-Allow-Credentials", "true");
