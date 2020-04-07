@@ -11,6 +11,8 @@ public interface BooklistDao {
     Booklist findByName(String name);
     List<Booklist> findAll();
     byte[] findCoverBybookid(String bookid);
+    String getDescriptionByBookId(String BookId);
+    String searchInDescription(String word);
     void save(Booklist booklist);
     void saveCover(Cover cover);
     void deleteOne(Integer id);

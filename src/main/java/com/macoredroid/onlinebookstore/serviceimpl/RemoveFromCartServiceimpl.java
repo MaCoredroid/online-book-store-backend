@@ -29,9 +29,7 @@ public class RemoveFromCartServiceimpl implements RemoveFromCartService {
             return false;
         }
 
-        List<Cart> tempcartlist=tempbook.getCarts();
-        tempcartlist.remove(tempcart);
-        tempbook.setCarts(tempcartlist);
+
 
         List<Cart> tempcartlistan=tempuser.getCarts();
         tempcartlistan.remove(tempcart);

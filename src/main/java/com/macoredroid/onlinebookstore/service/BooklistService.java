@@ -12,6 +12,8 @@ public interface BooklistService extends Remote {
     List<bookinfo> findAll() throws RemoteException;
     List<bookinfo> UserfindAll() throws RemoteException;
     byte[] findCoverByID(String id) throws RemoteException;
+    String getDescriptionByBookId(String BookId) throws RemoteException;
+    String searchInDescription(String word) throws RemoteException;
     boolean setCover(String id, byte[] cover) throws RemoteException;
     boolean block(String id) throws RemoteException;
     boolean unblock(String id) throws RemoteException;

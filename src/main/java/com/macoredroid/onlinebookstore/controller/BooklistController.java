@@ -121,6 +121,18 @@ public class BooklistController {
         BooklistService booklistService=applicationContext.getBean(BooklistService.class);
         return booklistService.DeleteBook(bookid);
     }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/getDescriptionByBookId/bookid/{bookid}")
+    public String getDescriptionByBookId(@PathVariable("bookid") String bookid) throws RemoteException {
+        BooklistService booklistService=applicationContext.getBean(BooklistService.class);
+        return booklistService.getDescriptionByBookId(bookid);
+    }
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value="/searchInDescription/bookid/{bookid}")
+    public String searchInDescription(@PathVariable("bookid") String bookid) throws RemoteException {
+        BooklistService booklistService=applicationContext.getBean(BooklistService.class);
+        return booklistService.searchInDescription(bookid);
+    }
 
 
 
