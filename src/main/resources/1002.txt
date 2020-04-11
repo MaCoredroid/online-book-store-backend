@@ -1,0 +1,112 @@
+The Three-Body Problem (Chinese: 三体; literally: 'Three-Body'; pinyin: sān tǐ) is a hard science fiction novel by the Chinese writer Liu Cixin. It is the first novel of the Remembrance of Earth's Past (Chinese: 地球往事) trilogy, but Chinese readers generally refer to the whole series by the title of this first novel.[1] The second and third novels in the trilogy are titled The Dark Forest and Death's End. The title of the first novel refers to the three-body problem in orbital mechanics.
+
+The work was serialized in Science Fiction World in 2006 and published as a book in 2008. It became one of the most popular science fiction novels in China.[2] It received the Chinese Science Fiction Yinhe Award ("Galaxy Award") in 2006.[3] A film adaptation of the same name was in production by 2015, but halted soon after.
+
+The English translation by Ken Liu was published by Tor Books in 2014.[4] It was the first Asian novel ever to win a Hugo Award for Best Novel, in 2015[5][6] and was nominated for the 2014 Nebula Award for Best Novel.[7]
+
+(In this article, Chinese names are written with the family name first and given name second. Liu Cixin's family name is Liu. Ken Liu's surname is also Liu; he is American and uses the English order. The two are not related.[8])
+
+
+Contents
+1	Background
+2	Plot
+3	Characters
+3.1	Ye family
+3.2	Red Coast Base
+3.3	The Present
+4	Awards
+5	Reception
+6	Trilogy
+7	Other translations
+8	Fan music
+9	Cinematic adaptations
+10	References
+11	External links
+Background
+In the 1990s, the Chinese government strengthened propaganda to achieve the "scientific and technological rejuvenation of the country", leading to favorable conditions for sci-fi creation.[9] Liu Cixin published his work in the magazine Science Fiction World since 1999.[10] When the short story "Mountain" was published in January 2006, many readers wrote that they hoped that he would write a long novel, so Liu Cixin decided to switch his writing to novel length material rather than short stories.[11] When he was not busy, he wrote three to five thousand words a day, and each of his books took about one year to complete.[12] The first "Three-body" was first serialized in the "Science Fiction World" magazine from May to December 2006. It received good responses from readers, so a book version was published.[11]
+
+Chinese-American science-fiction author Ken Liu was commissioned to produce an English translation of The Three-Body Problem, which contains footnotes elaborating upon references to Chinese history that may be unfamiliar to international audiences. A notable change to the translation were that chapters taking place during the Cultural Revolution were moved to the beginning, to serve as an introduction. Liu Cixin endorsed the change, noting that it was originally intended as the introduction to begin with, but had been moved later in the story in order to quell concerns by his publisher over its sensitivity under Chinese censorship policies.[13]
+
+Plot
+The story takes place in flash-forwards, backwards, and the present time. Below is a chronological plotline.
+
+During the Cultural Revolution, Ye Wenjie, an astrophysics graduate from Tsinghua University, witnesses her father beaten to death during a struggle session by Red Guards from Tsinghua High School supported by Ye's mother and younger sister. Ye is officially branded a traitor and is forced to join a labor brigade in Inner Mongolia, where she befriends a government journalist who enlists Ye's help in transcribing a letter to the government detailing policy suggestions based on the book Silent Spring, which she read. However, Ye is betrayed by the journalist and sentenced to prison after the letter is viewed as seditious by the government. In prison, she is recruited by Yang Weining and Lei Zhicheng, two military physicists working under Red Coast, a secret Chinese initiative to use high powered radio waves to damage spy satellites, who require Ye's skills in physics. Ye discovers the possibility of amplifying outgoing radio waves by using micro-wave cavities within the sun and sends an interstellar message. Eight years later, by now in a loveless marriage with Yang, Ye receives a message from a concerned alien pacifist from the planet Trisolaris, warning her not to respond or else the inhabitants of Trisolaris will locate and invade Earth. The alien proceeds to describe Trisolaris's environmental conditions and societal history. Ye, who is disillusioned by the political chaos and has come to despise humankind, responds anyway, inviting them to come to Earth to settle its problems. Ye murders her husband, Yang, along with Lei to keep the alien message a secret.
+
+Some time later, with the closing of the Cultural Revolution and Ye's return to Tsinghua as a professor, Ye encounters Mike Evans, the son of the CEO of the world's largest oil company, who is also a rabid environmentalist and a believer in the idea that all species are equal. Seeing that Evans is also direly angry at humanity, Ye confides to him the events at Red Coast. Evans uses his financial power to hire men and purchase a giant ship, which he converts into a mobile colony and listening post. Upon receiving messages from Trisolaris, thereby validating Ye's story, Evans announces the creation of the militant and semi-secret Earth-Trisolaris Organization (ETO) as a fifth column for Trisolaris and appoints Ye as the leader. According to the messages, the Trisolaran invasion force has departed, but will not reach Earth for 450 years, as they are traveling at 1/100-th of lightspeed. The society attracts numerous scientists, minor government officials, and other educated people who are disappointed with world affairs. They go on to assemble a private army and even to build small nuclear weapons. However, Evans retains control of most resources and starts to alter and withhold alien messages from Ye and others. Furthermore, the society splits into factions, with the Adventists (led by Evans) seeking complete destruction of humanity by the Trisolarans, and the Redemptionists (led by Shen Yufei) seeking to help the Trisolarans to find a computational solution to the three-body problem, which plagues their home planet. A third, smaller faction, the Survivors, intend to help the Trisolarans in exchange for their own descendants' lives while the rest of humanity dies.
+
+In the present day, Wang Miao, a nanotechnology professor, is asked to work with Shi Qiang, a cunning detective, to investigate the mysterious deaths of several scientists. The two of them notice that the world's governments are communicating closely with each other, and have put aside their traditional rivalries to prepare for war. Over the next few days, Wang experiences strange hallucinatory effects. Wang sees people playing a sophisticated virtual-reality video game called Three Body (which was created by the ETO as a recruitment tool) and begins to play himself. The video game portrays a planet whose climate randomly flips between Orderly and Chaotic Eras. During Chaotic Eras, the weather oscillates unpredictably between extreme cold and extreme heat, sometimes within minutes. The inhabitants (who are represented as having human bodies) seek ways to predict Chaotic Eras so they can better survive. Unlike humans, they have evolved the special ability to drain themselves of water, turning into a roll of canvas, in order to lie dormant when the Chaotic Eras occur, requiring another person to re-hydrate them. Characters resembling Aristotle, Mozi, Newton, and others try and fail to model the climate as multiple civilizations grow and are wiped out by large-scale disasters. Wang wins acclaim by figuring out how the climate works: (1) the planet Trisolaris has three suns, (2) the suns have different kinds of compositions, and when they are far away from the planet's surface only the core of the sun can penetrate to the surface, appearing in the sky as a flying star, (3) Orderly Eras occur when two suns are far away, and Trisolaris orbits the third, (4) Chaotic Eras occur when Trisolaris is pulled by more than one sun, (5) firestorms happen when two or three suns are close to the planet's surface, (6) seeing three flying stars causes intense cold because it means all three suns are far away, and (7) eventually the three suns will line up and Trisolaris will plunge into the nearest one and be consumed. The game shows the Trisolarans building and launching colony ships to invade Earth, believing that the stable orbit will allow unprecedented prosperity and let them escape the destruction of their planet.
+
+Wang is inducted into the ETO, and informs Shi of one of their meetings, leading to a battle between the PLA and the society's soldiers, and the arrest of Ye. The PLA works with the Americans, led by Colonel Stanton, to ambush Evans's ship as it passes through the Panama Canal. The team follows Shi's suggestion of cutting apart the ship and massacring the entire crew using Wang's nano-material filament, to stop them from destroying their data. From the data, some new revelations emerge. For one, the aliens have extremely advanced picotechnology which allows them to create eleven-dimensional supercomputers called sophons which, when viewed in three dimensions, only occupy the volume of a proton. For another, two of these sophons have been laboriously manufactured and sent to Earth, having the power to cause hallucinations, spy on any corner of the Earth, transmit the information gathered to Trisolaris using quantum entanglement, and disrupt all of Earth's particle accelerators. The Trisolarans fear Humanity will develop technology advanced enough to fight off the invasion, and decide that disrupting the accelerators to give random results will paralyze Earth's technological advancement until the Trisolarans arrive. Once several Sophons have arrived they plan to fabricate visual miracles and other hallucinations on a massive scale to make humanity distrust its own scientists. Detecting this via sophons, the Trisolarans beam one final message "You're bugs!" to the eyes of the PLA and cease all communications. Ye, now in custody, is allowed to visit the old Red Coast base, and reflects upon her past choices, noting that humanity from now on will never be the same. Shi Qiang finds Wang Miao and his colleagues in a depressed drinking binge, and sobers them up by driving them to his hometown village in Northeastern China. Shi Qiang reflects on how despite all the advances man has made over pesticides, the simple-minded locust still manages to survive and thrive. With renewed hope, Wang Miao and Shi Qiang return to Beijing to help plan the war against the Trisolarans.
+
+Characters
+In the following, Chinese names are written with the family name first and given name second.
+Ye family
+Ye Zhetai (叶哲泰) – Physicist, professor at Tsinghua University, killed during a struggle session in the Cultural Revolution
+Shao Lin (绍琳) – Physicist, Ye Zhetai's wife
+Ye Wenjie (叶文洁) – Astrophysicist, daughter of Ye Zhetai, first person to establish contact with the Trisolarans, later spiritual leader of ETO
+Ye Wenxue (叶文雪) – Ye Wenjie's younger sister, a Tsinghua High School student and a zealous Red Guard, killed during factional violence
+Red Coast Base
+Lei Zhicheng (雷志成) – Political commissar at Red Coast Base, who recruited Wenjie, later murdered by Ye
+Yang Weining (杨卫宁) – Chief engineer at Red Coast Base, once a student of Ye Zhetai, later Ye Wenjie's husband, murdered by Ye
+The Present
+Wang Miao (汪淼) – Nanomaterials researcher, academician of Chinese Academy of Sciences
+Yang Dong (杨冬) – String theorist and daughter of Ye Wenjie and Yang Weining, later committed suicide
+Ding Yi (丁仪) – Theoretical physicist, Yang Dong's boyfriend
+Shi Qiang (史强) – Police detective and counter-terrorism specialist, nicknamed "Da Shi" (大史), ("Big Shi")
+Chang Weisi (常伟思) – Major-general of the People’s Liberation Army
+Shen Yufei (申玉菲) – Chinese-Japanese physicist and member of the Frontiers of Science
+Wei Cheng (魏成) – Math prodigy and recluse, Shen Yufei's husband
+Pan Han (潘寒) – Biologist, friend/acquaintance of Shen Yufei and Wei Cheng, and member of the Frontiers of Science
+Sha Ruishan (沙瑞山) – Astronomer, one of Ye Wenjie's students
+Mike Evans (麦克·伊文斯) – Son of an oil magnate, main source of funding of the ETO
+Colonel Stanton (斯坦顿) – Officer of U.S. Marine Corps, commander of Operation Guzheng
+Awards
+Awards	
+2006 Yinhe (Galaxy Award (China))	Awarded[3]
+2015 Hugo Award for Best Novel	Awarded[14]
+2014 Nebula Award for Best Novel	Nominated[15]
+2015 Locus Award for Best SF Novel	Nominated[16]
+2015 Prometheus Award	Nominated[17]
+2015 John W. Campbell Memorial Award	Nominated[18]
+2017 Kurd-Laßwitz-Preis for Best Foreign SF work	Awarded[19]
+2017 Premio Ignotus for Foreign Novel	Awarded[20]
+2017 Grand Prix de l'Imaginaire for Foreign Novel	Nominated[21]
+Reception
+In December 2019, The New York Times cited The Three-Body Problem as having helped to popularize Chinese science fiction internationally, crediting the quality of Ken Liu's English translation, as well as endorsements of the book by George R. R. Martin, Facebook founder Mark Zuckerberg, and former U.S. president Barack Obama.[13] Obama described the book as having "immense" scope, and felt that it was "fun to read, partly because my day-to-day problems with Congress seem fairly petty".[22]
+
+Kirkus Reviews observed that "in concept and development, it resembles top-notch Arthur C. Clarke or Larry Niven but with a perspective—plots, mysteries, conspiracies, murders, revelations and all—embedded in a culture and politic dramatically unfamiliar to most readers in the West, conveniently illuminated with footnotes courtesy of translator Liu."[23] Joshua Rothman of The New Yorker also referred to Liu Cixin as "China's Arthur C. Clarke", and similarly observed that in "American science fiction… humanity’s imagined future often looks a lot like America’s past. For an American reader, one of the pleasures of reading Liu is that his stories draw on entirely different resources", citing his use of themes relating to Chinese history and politics.[24]
+
+Trilogy
+Main article: Remembrance of Earth's Past
+The subsequent books in the Remembrance of Earth's Past trilogy are:[25]
+
+黑暗森林 (The Dark Forest), 2008; English translation by Joel Martinsen published by Tor Books in 2015
+死神永生 (Death's End), 2010; English translation by Ken Liu published by Tor Books in 2016
+Other translations
+Italian: Il problema dei tre corpi, 2017
+Romanian: Problema celor trei corpuri, 2017
+Czech: Problém tří těles, 2017
+Finnish: Kolmen kappaleen probleema, 2018
+French: Le Problème à trois corps, 2016
+German: Die drei Sonnen, 2016
+Greek: Το πρόβλημα των τριών σωμάτων, 2016
+Hungarian: A Háromtest-probléma, 2016
+Japanese: 三体, 2019
+Mongolian: Гурван биет 2019
+Polish: Problem trzech ciał, 2017
+Portuguese: O Problema dos Três Corpos, 2016
+Russian: Задача трех тел, 2016
+South Korea: 삼체, 2013
+Spanish: El problema de los tres cuerpos, 2016
+Thai: ดาวซานถี่ อุบัติการสงครามล้างโลก, 2016
+Turkish: Üç Cisim Problemi, 2015
+Vietnamese: Tam Thể, 2016
+Ukrainian: Проблема трьох тіл, 2017
+Norwegian: Trelegemeproblemet, 2019
+Fan music
+There is a significant amount of fan-made music for the trilogy.
+
+PROJECT Three-Body OST[26] is a 2011 fan-made soundtrack album by Chinese electronic musician Wang Lifu. Lifu stated that the album was mostly composed of simple demos he wrote as he was reading the novel.[27]
+Live from Afar Vol. 1: Three Body in Sound[28] is a 2017 album also by Wang Lifu. It was aired first in a live session on the question-and-answer website Zhihu as part of a live session series called Interpretation of Books: The Beauty of Expertise and Insight.
+Cinematic adaptations
+The Three-Body Problem (Chinese: 三体) is a postponed Chinese science fiction 3D film[29] in-progress, adapted from The Three-Body Problem series by Liu Cixin, directed by Fanfan Zhang, and starring Feng Shaofeng and Zhang Jingchu.[30][31][32]

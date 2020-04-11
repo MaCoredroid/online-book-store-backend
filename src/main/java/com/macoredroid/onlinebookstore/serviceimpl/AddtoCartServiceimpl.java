@@ -37,9 +37,7 @@ public class AddtoCartServiceimpl implements AddtoCartService {
         }
         Cart tempcart=new Cart(time,number,tempBook,tempUser);
 
-        List<Cart> cartlist=tempBook.getCarts();
-        cartlist.add(tempcart);
-        tempBook.setCarts(cartlist);
+
 
         List<Cart> cartlistan=tempUser.getCarts();
         cartlistan.add(tempcart);

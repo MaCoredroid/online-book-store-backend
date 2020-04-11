@@ -63,9 +63,7 @@ public class PurchaseConsumerServiceimpl implements PurchaseConsumerService {
                 tempCartlist.remove(tempcart);
                 tempuser.setCarts(tempCartlist);
                 userDao.save(tempuser);
-                List<Cart> tempCartlistan=tempbook.getCarts();
-                tempCartlistan.remove(tempcart);
-                tempbook.setCarts(tempCartlistan);
+
                 tempbook.setStock(tempStocknum-tempOrdernum);
                 int sales=tempbook.getSales();
                 tempbook.setSales(sales+tempOrdernum);

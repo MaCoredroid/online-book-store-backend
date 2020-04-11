@@ -98,6 +98,16 @@ public class BooklistServiceimpl extends UnicastRemoteObject implements Booklist
     }
 
     @Override
+    public String getDescriptionByBookId(String BookId) throws RemoteException{
+        return BooklistDao.getDescriptionByBookId(BookId);
+    }
+
+    @Override
+    public String searchInDescription(String word) throws RemoteException{
+        return BooklistDao.searchInDescription(word);
+    }
+
+    @Override
     public boolean setCover(String id, byte[] cover) throws RemoteException{
         Booklist tempbook = BooklistDao.findOne(Integer.parseInt(id));
         if (tempbook == null)
