@@ -1,6 +1,7 @@
 package com.macoredroid.onlinebookstore.daoimpl;
 
 import com.alibaba.fastjson.JSONArray;
+import com.macoredroid.onlinebookstore.SearchFiles;
 import com.macoredroid.onlinebookstore.dao.BooklistDao;
 import com.macoredroid.onlinebookstore.entity.Booklist;
 import com.macoredroid.onlinebookstore.entity.Cover;
@@ -96,8 +97,8 @@ public class BooklistDaoimpl implements BooklistDao {
     }
 
     @Override
-    public String searchInDescription(String word) {
-        return "hhh";
+    public String searchInDescription(String word) throws Exception {
+        return SearchFiles.search(word);
     }
 
     @Override

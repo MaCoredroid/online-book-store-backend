@@ -17,7 +17,7 @@ public class ImageController {
     @Autowired
     WebApplicationContext applicationContext;
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value ="/image/{bookid}")
     public @ResponseBody byte[] getImage(@PathVariable("bookid") String bookid) throws IOException
     {
@@ -29,7 +29,7 @@ public class ImageController {
         return booklistService.findCoverByID(bookid);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @RequestMapping(value ="/setimage/{bookid}" ,method = RequestMethod.POST)
     public boolean  handleFileUpload(@PathVariable("bookid") String id,@RequestParam("file") MultipartFile file) throws IOException {
         String extension = FilenameUtils.getExtension(file.getOriginalFilename());

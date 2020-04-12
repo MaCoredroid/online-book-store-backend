@@ -103,7 +103,7 @@ public class BooklistServiceimpl extends UnicastRemoteObject implements Booklist
     }
 
     @Override
-    public String searchInDescription(String word) throws RemoteException{
+    public String searchInDescription(String word) throws Exception {
         return BooklistDao.searchInDescription(word);
     }
 
