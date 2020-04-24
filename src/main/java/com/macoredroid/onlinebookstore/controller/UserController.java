@@ -1,5 +1,6 @@
 package com.macoredroid.onlinebookstore.controller;
 
+import com.macoredroid.onlinebookstore.CustomerizedLogger;
 import com.macoredroid.onlinebookstore.info.Admininfo;
 import com.macoredroid.onlinebookstore.info.Userinfo;
 import com.macoredroid.onlinebookstore.service.*;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -22,8 +24,9 @@ public class UserController {
 
 
     @GetMapping(value="/counter")
-    public int counter() throws RemoteException {
-
+    public int counter() throws IOException {
+        CustomerizedLogger customerizedLogger =applicationContext.getBean(CustomerizedLogger.class);
+        customerizedLogger.writeLog("count once!");
         return c.get();
 
     }
