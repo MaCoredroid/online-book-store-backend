@@ -12,7 +12,7 @@ public interface BooklistDao {
     List<Booklist> findAll();
     byte[] findCoverBybookid(String bookid);
     String getDescriptionByBookId(String BookId);
-    String searchInDescription(String word);
+    String searchInDescription(String word) throws Exception;
     void save(Booklist booklist);
     void saveCover(Cover cover);
     void deleteOne(Integer id);

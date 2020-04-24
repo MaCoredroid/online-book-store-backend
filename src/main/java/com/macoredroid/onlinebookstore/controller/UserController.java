@@ -1,5 +1,6 @@
 package com.macoredroid.onlinebookstore.controller;
 
+import com.macoredroid.onlinebookstore.CustomerizedLogger;
 import com.macoredroid.onlinebookstore.info.Admininfo;
 import com.macoredroid.onlinebookstore.info.Userinfo;
 import com.macoredroid.onlinebookstore.service.*;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -20,16 +22,17 @@ public class UserController {
 
     private AtomicInteger c = new AtomicInteger(0);
 
-    @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping(value="/counter")
-    public int counter() throws RemoteException {
 
+    @GetMapping(value="/counter")
+    public int counter() throws IOException {
+        CustomerizedLogger customerizedLogger =applicationContext.getBean(CustomerizedLogger.class);
+        customerizedLogger.writeLog("count once!");
         return c.get();
 
     }
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value ="/login/{username}/password/{password}")
     @ResponseBody
     public String findUser(HttpServletResponse response,@PathVariable("username") String username, @PathVariable("password") String password)
@@ -41,7 +44,7 @@ public class UserController {
         return loginService.Login(username, password);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value ="/register/username/{username}/password/{password}/email/{email}/star/{star}")
     public Boolean RegisterUser(@PathVariable("username") String username, @PathVariable("password") String password,@PathVariable("email") String email,@PathVariable("star") String star)
     {
@@ -67,7 +70,7 @@ public class UserController {
         return loginService.LoginWithoutVerify();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value ="/registeradmin/username/{username}/password/{password}/email/{email}")
     public Boolean RegisterAdmin(@PathVariable("username") String username, @PathVariable("password") String password,@PathVariable("email") String email)
     {
@@ -83,7 +86,7 @@ public class UserController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/userprofile/username/{username}")
     public Userinfo GetUserProfile(@PathVariable("username") String username)
     {
@@ -91,7 +94,7 @@ public class UserController {
         return getUserProfileService.GetUserProfile(username);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/adminprofile/username/{username}")
     public Admininfo GetAdminProfile(@PathVariable("username") String username)
     {
@@ -99,7 +102,7 @@ public class UserController {
         return getUserProfileService.GetAdminProfile(username);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/userprofile/change/username/{username}/newusername/{newusername}")
     public boolean ChangeUsername(@PathVariable("username") String username,@PathVariable("newusername") String newusername)
     {
@@ -115,7 +118,7 @@ public class UserController {
         }
 
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/adminprofile/change/username/{username}/newusername/{newusername}")
     public boolean ChangeAdminUsername(@PathVariable("username") String username,@PathVariable("newusername") String newusername)
     {
@@ -131,7 +134,7 @@ public class UserController {
         }
 
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/userprofile/change/username/{username}/newemail/{newemail}")
     public boolean ChangeUserEmail(@PathVariable("username") String username,@PathVariable("newemail") String newemail)
     {
@@ -139,7 +142,7 @@ public class UserController {
         return changeUserService.ChangeEmail(username,newemail);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/userprofile/change/username/{username}/newpassword/{newpassword}")
     public boolean ChangeUserPassword(@PathVariable("username") String username,@PathVariable("newpassword") String newpassword)
     {
@@ -147,7 +150,7 @@ public class UserController {
         return changeUserService.ChangePassword(username, newpassword);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/adminprofile/change/username/{username}/newpassword/{newpassword}")
     public boolean ChangeAdminPassword(@PathVariable("username") String username,@PathVariable("newpassword") String newpassword)
     {
@@ -155,7 +158,7 @@ public class UserController {
         return changeUserService.ChangeAdminPassword(username, newpassword);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/admin/seeAllUser")
     public List<Userinfo> SeeAllUsers()
     {
@@ -163,7 +166,7 @@ public class UserController {
         return seeAllUsers.SeeAllUsers();
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/userprofile/unsubscribe/username/{username}")
     public boolean Unsubscribe(@PathVariable("username") String username)
     {
@@ -171,7 +174,7 @@ public class UserController {
         return unsubscribeService.Unsubscribe(username);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/admin/block/{username}")
     public boolean BlockUser(@PathVariable("username") String username)
     {
@@ -179,7 +182,7 @@ public class UserController {
         return blockUserService.BlockUserService(username);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/admin/unblock/{username}")
     public boolean UnBlockUser(@PathVariable("username") String username)
     {

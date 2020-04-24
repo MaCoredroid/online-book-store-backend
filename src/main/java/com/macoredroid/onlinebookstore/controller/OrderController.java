@@ -16,14 +16,14 @@ import java.util.List;
 public class OrderController {
     @Autowired
     WebApplicationContext applicationContext;
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value ="/order/getorder/{username}")
     public List<Orderinfo> findUser(@PathVariable("username") String username) {
         GetOrderService getOrderService=applicationContext.getBean(GetOrderService.class);
         return  getOrderService.findAllByUsername(username);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value ="/order/id/{id}")
     public Orderinfo findByID(@PathVariable("id") String id)
     {
@@ -31,7 +31,7 @@ public class OrderController {
         return  getOrderService.findOne(Integer.parseInt(id));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/admin/seeAllOrder")
     public List<Orderinfo> findAllOrder()
     {
