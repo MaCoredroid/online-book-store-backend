@@ -178,7 +178,7 @@ public class UserController {
     @GetMapping(value="/admin/block/{username}")
     public boolean BlockUser(@PathVariable("username") String username)
     {
-        BlockUserService blockUserService=applicationContext.getBean(BlockUserService.class);;
+        BlockUserService blockUserService=applicationContext.getBean(BlockUserService.class);
         return blockUserService.BlockUserService(username);
     }
 
@@ -186,8 +186,29 @@ public class UserController {
     @GetMapping(value="/admin/unblock/{username}")
     public boolean UnBlockUser(@PathVariable("username") String username)
     {
-        BlockUserService blockUserService=applicationContext.getBean(BlockUserService.class);;
+        BlockUserService blockUserService=applicationContext.getBean(BlockUserService.class);
         return blockUserService.UnBlockUserService(username);
+    }
+
+    @GetMapping(value="/getAllUsername")
+    public List<String> getAllUsername()
+    {
+        FriendService friendService=applicationContext.getBean(FriendService.class);
+        return friendService.getAllUsername();
+    }
+
+    @GetMapping(value="/beFriendWith/username/{username}/friend/{friend}")
+    public boolean beFriendWith(@PathVariable("username") String username,@PathVariable("friend")String friend)
+    {
+        FriendService friendService=applicationContext.getBean(FriendService.class);
+        return friendService.beFriendWith(username, friend);
+    }
+
+    @GetMapping(value="/getFriends/{username}")
+    public List<String> getFriends(@PathVariable("username") String username)
+    {
+        FriendService friendService=applicationContext.getBean(FriendService.class);
+        return friendService.getFriends(username);
     }
 
 
