@@ -12,4 +12,7 @@ public interface UserDao {
     void save(User user);
     List<User> findAll();
     void remove(Integer id);
+    boolean beFriendWith(String username,String friend);
+    List<String> getFriends(String username);
+
 }
